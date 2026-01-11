@@ -1,10 +1,7 @@
 #!/bin/bash
 
 PATH="./node_modules/.bin:"${PATH}
-rm -rfv dist/public \
-    && rm -rfv dist/views \
+rm -rfv dist \
     && tsc \
-    && cp -rv public dist/ \
-    && cp -rv views dist/ \
     && node dist/index.js
 

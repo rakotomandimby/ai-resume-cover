@@ -1,7 +1,6 @@
 #!/bin/bash
 
 PATH="./node_modules/.bin:"${PATH}
-rm -rfv dist/public \
-  && rm -rfv dist/views \
+rm -rfv dist \
   && tsc
 

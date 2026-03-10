@@ -3,7 +3,7 @@ import { getPromptCoverLetter, getPromptCV } from './prompt';
 import { getSystemInstructionCoverLetter, getSystemInstructionCV } from './system-instruction';
 import { nl2br, nullToEmptyString, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'gpt-5.1';  
+const model_to_use = 'gpt-5.4';  
 
 export async function getOpenAICoverLetterResult(company: string, position: string, job: string, language: string, words: string, searchCompanyInfo: boolean ): Promise<string> {
   const openai = new OpenAI({apiKey: getAPIKey("openai")});

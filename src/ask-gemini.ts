@@ -3,7 +3,7 @@ import { getSystemInstructionCoverLetter, getSystemInstructionCV } from './syste
 import { getPromptCoverLetter, getPromptCV } from './prompt';
 import { nl2br, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'gemini-3-pro-preview';
+const model_to_use = 'gemini-3.1-pro-preview';
 
 export async function getGeminiCoverLetterResult(company: string, position: string, job: string, language: string, words: string, searchCompanyInfo: boolean): Promise<string> {
   const genAI = new GoogleGenerativeAI(getAPIKey("gemini"));

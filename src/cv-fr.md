@@ -15,7 +15,7 @@
 
 # Parcours professionnel détaillé
 
-- Directeur des systèmes d'information chez Inviso Group depuis novembre 2025
+- Directeur des systèmes d'information chez Inviso Group de novembre 2025 à avril 2026
     - Superviser la stratégie informatique et l'infrastructure de l'entreprise afin d'assurer son alignement avec les objectifs commerciaux.
     - Diriger une équipe de professionnels de l'informatique pour mettre en œuvre et maintenir des solutions technologiques qui améliorent l'efficacité opérationnelle.
     - Piloter les configurations ERP Sage, comptabilité, gestion des ressources humaines et business intelligence pour uniformiser le paramétrage sur les différentes sociétés du groupe.
@@ -23,7 +23,7 @@
     - Développer et mettre en œuvre des stratégies pour améliorer l'efficacité opérationnelle de 25 développeurs PHP.
     - Établir des indicateurs, des références et des objectifs pour surveiller et évaluer les initiatives d'amélioration des performances.
     - Collaborer de manière transverse pour améliorer les processus et les pratiques de dévloppement.
-- Lead Developer pour LogicRDV de 2025 à aujourd'hui
+- Lead Developer pour LogicRDV de avril 2025 à avril 2026
     - Direction d'une équipe de 6 développeurs sur une application web de gestion des rendez-vous et des plannings.
     - Pile technologique: NodeJS avec Typescript, React, MariaDB, Redis et Kafka.
     - Déploiement sur AWS avec Docker et Kubernetes.

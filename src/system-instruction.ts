@@ -5,7 +5,7 @@ import fs from 'fs';
 export function getSystemInstructionCoverLetter(company: string, job: string, words: string, language: string, searchCompanyInfo: boolean): string {
   const cv_en = fs.readFileSync('./src/cv-en.md', 'utf8');
   const cv_fr = fs.readFileSync('./src/cv-fr.md', 'utf8');
-  const shouldIncludeCompanySearch = searchCompanyInfo && company !== 'Unknown';
+  const shouldIncludeCompanySearch = searchCompanyInfo && company == 'Unknown';
   const company_search_fr = shouldIncludeCompanySearch
     ? 'Prends ce que tu sais sur la société "' + company + '". '
     : '';

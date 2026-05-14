@@ -5,23 +5,19 @@ import fs from 'fs';
 export function getSystemInstructionCoverLetter(company: string, job: string, words: string, language: string, searchCompanyInfo: boolean): string {
   const cv_en = fs.readFileSync('./src/cv-en.md', 'utf8');
   const cv_fr = fs.readFileSync('./src/cv-fr.md', 'utf8');
-  let company_search_fr = '';
-  let company_search_en = '';
-
-  // Only include company search instruction if company is not "Unknown" AND searchCompanyInfo is true
-  if(company !== 'Unknown' && searchCompanyInfo){
-    company_search_fr = 'Prends ce que tu sais sur la société "' + company + '". '; // Added space at the end
-  }
-
-  if(company !== 'Unknown' && searchCompanyInfo){
-    company_search_en = 'Grab what you have about the company "' + company + '". '; // Added space at the end
-  }
+  const shouldIncludeCompanySearch = searchCompanyInfo && company !== 'Unknown';
+  const company_search_fr = shouldIncludeCompanySearch
+    ? 'Prends ce que tu sais sur la société "' + company + '". '
+    : '';
+  const company_search_en = shouldIncludeCompanySearch
+    ? 'Grab what you have about the company "' + company + '". '
+    : '';
 
   let system_instruction_fr = ():string => {
     return '# Instructions pour Lettre de Motivation\n\n'
       + 'Agis en tant que chercheur d\'emploi qui veut rédiger une lettre de motivation qui sera utile pour obtenir un emploi. '
-      + company_search_fr // This will be empty if conditions are not met
-      + 'et écris une lettre de motivation de ' + words + ' mots avec des mots qui sont significatifs pour un responsable des ressources humaines.\n\n'
+      + company_search_fr
+      + 'Écris une lettre de motivation de ' + words + ' mots avec des mots qui sont significatifs pour un responsable des ressources humaines.\n\n'
       + 'Voici la description du poste convoité:\n\n"' + job + '".\n'
       + 'Le CV de base du candidat est le suivant:\n\n"' + cv_fr + '".\n'
       + 'Parles à la première personne, tu es le candidat. Pour formatter ta réponse, n\'utilises pas Markdown, utilises simplement du texte brut.';
@@ -29,8 +25,8 @@ export function getSystemInstructionCoverLetter(company: string, job: string, wo
   let system_instruction_en = ():string => {
     return '# Cover Letter Instructions\n\n'
       + 'Act as a job seeker who needs to write a cover letter that will be valuable to get a job. '
-      + company_search_en // This will be empty if conditions are not met
-      + 'and write a '+ words +' words cover letter with words that are meaningful to human resource staff.\n\n'
+      + company_search_en
+      + 'Write a '+ words +' words cover letter with words that are meaningful to human resource staff.\n\n'
       + 'This is the job description:\n\n"'+ job + '".\n'
       + 'The candidate\'s base CV is as follows:\n\n"' + cv_en + '".\n'
       + 'You will talk in the first person, as you are the candidate. For formatting your answer, do not use Markdown, just plain text.';

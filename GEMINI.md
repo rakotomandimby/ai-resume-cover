@@ -1,1 +1,1 @@
-.ai-system-instruction.md
+.ai-system-instructions.md

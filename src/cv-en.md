@@ -2,10 +2,10 @@
 
 - **Name**: Mihamina RAKOTOMANDIMBY
 - **Email**: mihamina@rktmb.org
-- **Phone**: +261 32 99 236 88
+- **Phone**: +261 32 99 236 88 (WhatsApp also)
 - **Location**: Antananarivo, Madagascar
 - **LinkedIn**: https://www.linkedin.com/in/mihaminarakotomandimby/
-- **Availability**: 2 weeks
+- **Availability**: within 2 weeks
 
 # Key skills
 
@@ -31,7 +31,7 @@
     - A Neovim plugin meaning to be the equivalent or better VSCode Github CopilotChat
     - Iterative improvements and bugfixes
     - Documentation completion
-- VoIP Asterisk consultant for Color Telecom and Tel-On from 2025 to present
+- VoIP Asterisk consultant for Color Telecom and Tel-On from january 2024 to october 2025
     - Voice over IP (VoIP) infrastructure architect.
     - Core IP PBX Asterisk AGI and AMI features development, using PHP and Typescript languages.
     - Linux infrastructure architect on both physical servers and Cloud (VMWare).
@@ -39,7 +39,7 @@
     - A Neovim plugin to use AI models in the Neovim editor.
     - Supports OpenAI, Google Gemini, and Anthropic AI models.
     - Strong context management to provide relevant answers from the AI models.
-- Information Technology Architect at Intelios from august 2020 to 2024
+- Information Technology Architect at Intelios from 2020 to 2024
     - Drive Coding Standards
         - Establish Coding standards and according CI/CD tools and configuration (Jenkins)
         - Train newcomers to the established standards

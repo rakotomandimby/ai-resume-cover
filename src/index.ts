@@ -147,16 +147,17 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
       results: createUniformResults('error', 'Invalid token.'),
     });
   }
-
-  const geminiCVPromise = getGeminiCVResult(job, position, language);
-  const openAICVPromise = getOpenAICVResult(job, position, language);
+  const dryRun = false;
+  const geminiCVPromise = getGeminiCVResult(job, position, language, dryRun);
+  const openAICVPromise = getOpenAICVResult(job, position, language, dryRun);
   const geminiCoverLetterPromise = getGeminiCoverLetterResult(
     companyForProcessing,
     position,
     job,
     language,
     words,
-    searchCompanyInfo
+    searchCompanyInfo,
+    dryRun
   );
   const openAICoverLetterPromise = getOpenAICoverLetterResult(
     companyForProcessing,
@@ -164,7 +165,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     job,
     language,
     words,
-    searchCompanyInfo
+    searchCompanyInfo,
+    dryRun
   );
 
   const [geminiCVResponse, openAICVResponse, geminiCoverLetterResponse, openAICoverLetterResponse] =

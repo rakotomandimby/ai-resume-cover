@@ -5,13 +5,14 @@ import fs from 'fs';
 export function getSystemInstructionCoverLetter(company: string, job: string, words: string, language: string, searchCompanyInfo: boolean): string {
   const cv_en = fs.readFileSync('./src/cv-en.md', 'utf8');
   const cv_fr = fs.readFileSync('./src/cv-fr.md', 'utf8');
-  const shouldIncludeCompanySearch = searchCompanyInfo && company == 'Unknown';
+  const shouldIncludeCompanySearch = searchCompanyInfo; 
   const company_search_fr = shouldIncludeCompanySearch
     ? 'Prends ce que tu sais sur la société "' + company + '". '
     : '';
   const company_search_en = shouldIncludeCompanySearch
     ? 'Grab what you have about the company "' + company + '". '
     : '';
+
 
   let system_instruction_fr = ():string => {
     return '# Instructions pour Lettre de Motivation\n\n'
@@ -40,6 +41,7 @@ export function getSystemInstructionCoverLetter(company: string, job: string, wo
   }
   return '';
 }
+
 
 // New function for CV System Instructions
 export function getSystemInstructionCV(jobDescription: string, language: string): string {

@@ -5,7 +5,9 @@
 - **Téléphone**: +261 32 99 236 88 (WhatsApp aussi)
 - **Localisation**: Antananarivo, Madagascar
 - **LinkedIn**: https://www.linkedin.com/in/mihaminarakotomandimby/
+- **GitHub**: https://github.com/rakotomandimby
 - **Disponibilité**: sous 2 semaines
+- **Langues**: Français (natif), Anglais (professionnel)
 
 # Compétences clés
 

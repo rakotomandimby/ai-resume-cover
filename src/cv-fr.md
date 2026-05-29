@@ -50,6 +50,10 @@
         - Choisir et mettre en place la plateforme de virtualisation (VMWare ESX sur 3 hôtes physiques)
         - Choisir et mettre en place les outils DevOps (Kubernetes, Jenkins)
         - Choisir et mettre en place la stratégie de sécurité, sauvegarde et mise à jour
+- Chef de projet pour Ibonia de 2020 à 2021
+    - Développement, déploiement et maintenance d'un système host-to-host de validation des virements bancaires entre Airtel et Bank of Africa
+    - Evolution des paramétrages d'une application de géneration de code (Codesmith) pour les développeurs (PHP, XML)
+    - Lancement d'une plateforme d'optimisation des réservations de tables de restaurant (PHP, React, Neo4j + MySQL)
 - Responsable DevOps chez SDWorx Mauritius de novembre 2019 à août 2020
     - Animer des sessions pour établir et adopter les normes DevOps
     - Maximiser l'automatisation partout où c'est possible (Ranorex, NewMan)

@@ -50,6 +50,10 @@
         - Choose and establish virtualization platform (VMWare ESX on 3 physical hosts)
         - Choose and establish DevOps tooling (Kubernetes, Jenkins)
         - Choose and establish security, backup and update strategy
+- Project Manager for Ibonia from 2020 to 2021
+    - Develop, deploy and maintain a host-to-host system for validating bank transfers between Airtel and Bank of Africa
+    - Evolve the settings of a code generation application (Codesmith) for developers (PHP, XML)
+    - Launch a platform for optimizing restaurant booking (PHP, React, Neo4j + MySQL)
 - DevOps Team Lead at SDWorx Mauritius from november 2019 to august 2020
     - Drive sessions to write down and adopt DevOps standards
     - Maximize automation everywhere it is possible (Ranorex, NewMan)

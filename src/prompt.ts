@@ -1,9 +1,15 @@
-export function getPromptCoverLetter(language: string, company: string, position: string, words: string): string { // Renamed from getPrompt
+export function getPromptCoverLetter(language: string, company: string, position: string, words: string, searchCompanyInfo: boolean): string { // Renamed from getPrompt
   if (language === 'French') {
-    return 'Écris une lettre de motivation de ' + words + ' mots pour postuler au poste "' + position + '" dans la société "' + company + '".';
+    if (searchCompanyInfo && company && company !== 'Unknown') {
+      return 'Écris une lettre de motivation de ' + words + ' mots pour postuler au poste "' + position + '" dans la société "' + company + '".';
+    }
+    return 'Écris une lettre de motivation de ' + words + ' mots pour postuler au poste "' + position + '".';
   }
   if (language === 'English') {
-    return 'Write a ' + words + ' words cover letter to apply for the "' + position + '" position at the "' + company + '" company.';
+    if (searchCompanyInfo && company && company !== 'Unknown') {
+      return 'Write a ' + words + ' words cover letter to apply for the "' + position + '" position at the "' + company + '" company.';
+    }
+    return 'Write a ' + words + ' words cover letter to apply for the "' + position + '" position.';
   }
   return '';
 }
@@ -18,3 +24,4 @@ export function getPromptCV(language: string, jobDescription: string, position: 
   }
   return '';
 }
+

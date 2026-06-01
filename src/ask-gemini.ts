@@ -15,7 +15,7 @@ export async function getGeminiCoverLetterResult(company: string, position: stri
   const interaction = await client.interactions.create({
     model: model_to_use,
     system_instruction: getSystemInstructionCoverLetter(company, job, words, language, searchCompanyInfo),
-    input: getPromptCoverLetter(language, company, position, words)
+    input: getPromptCoverLetter(language, company, position, words, searchCompanyInfo)
   });
   
   const lastStep = interaction.steps.at(-1);

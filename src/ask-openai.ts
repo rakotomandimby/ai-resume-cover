@@ -15,7 +15,7 @@ export async function getOpenAICoverLetterResult(company: string, position: stri
   const chatCompletion = await openai.chat.completions.create({
     messages: [
       {role: 'system', content: getSystemInstructionCoverLetter(company, job, words, language, searchCompanyInfo)},
-      {role: 'user', content: getPromptCoverLetter(language, company, position, words)}
+      {role: 'user', content: getPromptCoverLetter(language, company, position, words, searchCompanyInfo)}
     ],
     model: model_to_use});  
   return nl2br( nullToEmptyString(chatCompletion.choices[0].message.content));

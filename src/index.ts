@@ -115,6 +115,7 @@ app.get('/', csrfProtection, (req: Request, res: Response) => {
     csrfToken: (req as any).csrfToken(),
     formError: null,
     selectedCombination: 'openai-gemini',
+    isInitialLoad: true,
   });
 });
 
@@ -133,6 +134,7 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     csrfToken: csrfTokenValue,
     formError: null as string | null,
     selectedCombination,
+    isInitialLoad: false,
   };
 
   if (!job || !language || !position || !words || submittedToken === undefined) {
@@ -272,6 +274,7 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     csrfToken: csrfTokenValue,
     formError: null,
     selectedCombination,
+    isInitialLoad: false,
   });
 });
 
@@ -286,6 +289,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
       formError:
         'Invalid form submission token. Please refresh the page and try again. Ensure cookies are enabled in your browser.',
       selectedCombination: 'openai-gemini',
+      isInitialLoad: true,
     });
   } else {
     next(err);

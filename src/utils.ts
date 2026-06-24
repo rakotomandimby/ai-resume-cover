@@ -16,6 +16,10 @@ export function getAPIKey(modelName:string): string {
     if (process.env["GOOGLEAI_API_KEY"] === undefined) {return "";}
     else {return process.env["GOOGLEAI_API_KEY"];}
   }
+  else if (modelName === "anthropic") {
+    if (process.env["ANTHROPIC_API_KEY"] === undefined) {return "";}
+    else {return process.env["ANTHROPIC_API_KEY"];}
+  }
   else {return "";}
 }
 
@@ -41,3 +45,4 @@ export function removeMarkdownCodeBlocks(text: string): string {
   text = text.replace(/```/g, '');
   return text;
 }
+

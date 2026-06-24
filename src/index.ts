@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
 import { getOpenAICoverLetterResult, getOpenAICVResult } from './ask-openai';
 import { getGeminiCoverLetterResult, getGeminiCVResult } from './ask-gemini';
+import { getAnthropicCoverLetterResult, getAnthropicCVResult } from './ask-anthropic';
 import { getAuthToken } from './utils';
 
 type GenerationStatus = 'idle' | 'success' | 'error';
@@ -17,8 +18,10 @@ interface GenerationResult {
 interface TemplateResults {
   geminiCV: GenerationResult;
   openAICV: GenerationResult;
+  anthropicCV: GenerationResult;
   geminiCoverLetter: GenerationResult;
   openAICoverLetter: GenerationResult;
+  anthropicCoverLetter: GenerationResult;
 }
 
 const createInitialResults = (): TemplateResults => ({
@@ -30,6 +33,10 @@ const createInitialResults = (): TemplateResults => ({
     status: 'idle',
     content: 'Waiting for your job description for CV generation',
   },
+  anthropicCV: {
+    status: 'idle',
+    content: 'Waiting for your job description for CV generation',
+  },
   geminiCoverLetter: {
     status: 'idle',
     content: 'Waiting for your question for Cover Letter',
@@ -38,13 +45,19 @@ const createInitialResults = (): TemplateResults => ({
     status: 'idle',
     content: 'Waiting for your question for Cover Letter',
   },
+  anthropicCoverLetter: {
+    status: 'idle',
+    content: 'Waiting for your question for Cover Letter',
+  },
 });
 
 const createUniformResults = (status: GenerationStatus, content: string): TemplateResults => ({
   geminiCV: { status, content },
   openAICV: { status, content },
+  anthropicCV: { status, content },
   geminiCoverLetter: { status, content },
   openAICoverLetter: { status, content },
+  anthropicCoverLetter: { status, content },
 });
 
 const mapSettledResult = (
@@ -76,6 +89,9 @@ if (!process.env.OPENAI_API_KEY) {
 }
 if (!process.env.GOOGLEAI_API_KEY) {
   envErrors.push('GOOGLEAI_API_KEY is not set. Google AI features may not work.');
+}
+if (!process.env.ANTHROPIC_API_KEY) {
+  envErrors.push('ANTHROPIC_API_KEY is not set. Anthropic features may not work.');
 }
 
 const configuredAuthToken = getAuthToken();
@@ -150,6 +166,7 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
   const dryRun = false;
   const geminiCVPromise = getGeminiCVResult(job, position, language, dryRun);
   const openAICVPromise = getOpenAICVResult(job, position, language, dryRun);
+  const anthropicCVPromise = getAnthropicCVResult(job, position, language, dryRun);
   const geminiCoverLetterPromise = getGeminiCoverLetterResult(
     companyForProcessing,
     position,
@@ -168,14 +185,31 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     searchCompanyInfo,
     dryRun
   );
+  const anthropicCoverLetterPromise = getAnthropicCoverLetterResult(
+    companyForProcessing,
+    position,
+    job,
+    language,
+    words,
+    searchCompanyInfo,
+    dryRun
+  );
 
-  const [geminiCVResponse, openAICVResponse, geminiCoverLetterResponse, openAICoverLetterResponse] =
-    await Promise.allSettled([
-      geminiCVPromise,
-      openAICVPromise,
-      geminiCoverLetterPromise,
-      openAICoverLetterPromise,
-    ]);
+  const [
+    geminiCVResponse,
+    openAICVResponse,
+    anthropicCVResponse,
+    geminiCoverLetterResponse,
+    openAICoverLetterResponse,
+    anthropicCoverLetterResponse,
+  ] = await Promise.allSettled([
+    geminiCVPromise,
+    openAICVPromise,
+    anthropicCVPromise,
+    geminiCoverLetterPromise,
+    openAICoverLetterPromise,
+    anthropicCoverLetterPromise,
+  ]);
 
   const finalResults: TemplateResults = {
     geminiCV: mapSettledResult(geminiCVResponse, {
@@ -186,6 +220,10 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
       logContext: 'Error with OpenAI CV generation',
       userMessagePrefix: 'Error generating CV with OpenAI',
     }),
+    anthropicCV: mapSettledResult(anthropicCVResponse, {
+      logContext: 'Error with Anthropic CV generation',
+      userMessagePrefix: 'Error generating CV with Anthropic',
+    }),
     geminiCoverLetter: mapSettledResult(geminiCoverLetterResponse, {
       logContext: 'Error with Gemini Cover Letter generation',
       userMessagePrefix: 'Error generating Cover Letter with Gemini',
@@ -193,6 +231,10 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     openAICoverLetter: mapSettledResult(openAICoverLetterResponse, {
       logContext: 'Error with OpenAI Cover Letter generation',
       userMessagePrefix: 'Error generating Cover Letter with OpenAI',
+    }),
+    anthropicCoverLetter: mapSettledResult(anthropicCoverLetterResponse, {
+      logContext: 'Error with Anthropic Cover Letter generation',
+      userMessagePrefix: 'Error generating Cover Letter with Anthropic',
     }),
   };
 

@@ -18,6 +18,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.105.0",
     "@google/genai": "^2.6.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/csurf": "^1.11.5",

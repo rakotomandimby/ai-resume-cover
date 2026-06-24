@@ -3,7 +3,7 @@ import { getSystemInstructionCoverLetter, getSystemInstructionCV } from './syste
 import { getPromptCoverLetter, getPromptCV } from './prompt';
 import { nl2br, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'claude-opus-4-6';
+const model_to_use = 'claude-opus-4-8';
 
 export async function getAnthropicCoverLetterResult(
   company: string,

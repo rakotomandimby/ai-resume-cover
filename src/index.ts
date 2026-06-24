@@ -114,20 +114,25 @@ app.get('/', csrfProtection, (req: Request, res: Response) => {
     results: createInitialResults(),
     csrfToken: (req as any).csrfToken(),
     formError: null,
+    selectedCombination: 'openai-gemini',
   });
 });
 
 app.post('/', csrfProtection, async (req: Request, res: Response) => {
   const csrfTokenValue = (req as any).csrfToken();
-  const { job, language, position, words, token: submittedToken } = req.body;
+  const { job, language, position, words, token: submittedToken, providersCombination } = req.body;
   const companyFromRequest = req.body.company;
   const searchCompanyInfo = req.body.searchCompany === 'true';
+
+  const validCombinations = ['openai-gemini', 'openai-anthropic', 'gemini-anthropic'];
+  const selectedCombination = validCombinations.includes(providersCombination) ? providersCombination : 'openai-gemini';
 
   const baseRenderOptionsForPost = {
     envErrors,
     results: createUniformResults('error', 'An error occurred or input was missing.'),
     csrfToken: csrfTokenValue,
     formError: null as string | null,
+    selectedCombination,
   };
 
   if (!job || !language || !position || !words || submittedToken === undefined) {
@@ -163,37 +168,60 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
       results: createUniformResults('error', 'Invalid token.'),
     });
   }
+
   const dryRun = false;
-  const geminiCVPromise = getGeminiCVResult(job, position, language, dryRun);
-  const openAICVPromise = getOpenAICVResult(job, position, language, dryRun);
-  const anthropicCVPromise = getAnthropicCVResult(job, position, language, dryRun);
-  const geminiCoverLetterPromise = getGeminiCoverLetterResult(
-    companyForProcessing,
-    position,
-    job,
-    language,
-    words,
-    searchCompanyInfo,
-    dryRun
-  );
-  const openAICoverLetterPromise = getOpenAICoverLetterResult(
-    companyForProcessing,
-    position,
-    job,
-    language,
-    words,
-    searchCompanyInfo,
-    dryRun
-  );
-  const anthropicCoverLetterPromise = getAnthropicCoverLetterResult(
-    companyForProcessing,
-    position,
-    job,
-    language,
-    words,
-    searchCompanyInfo,
-    dryRun
-  );
+
+  const runGemini = selectedCombination === 'openai-gemini' || selectedCombination === 'gemini-anthropic';
+  const runOpenAI = selectedCombination === 'openai-gemini' || selectedCombination === 'openai-anthropic';
+  const runAnthropic = selectedCombination === 'openai-anthropic' || selectedCombination === 'gemini-anthropic';
+
+  const geminiCVPromise = runGemini
+    ? getGeminiCVResult(job, position, language, dryRun)
+    : Promise.resolve('Not selected');
+
+  const openAICVPromise = runOpenAI
+    ? getOpenAICVResult(job, position, language, dryRun)
+    : Promise.resolve('Not selected');
+
+  const anthropicCVPromise = runAnthropic
+    ? getAnthropicCVResult(job, position, language, dryRun)
+    : Promise.resolve('Not selected');
+
+  const geminiCoverLetterPromise = runGemini
+    ? getGeminiCoverLetterResult(
+        companyForProcessing,
+        position,
+        job,
+        language,
+        words,
+        searchCompanyInfo,
+        dryRun
+      )
+    : Promise.resolve('Not selected');
+
+  const openAICoverLetterPromise = runOpenAI
+    ? getOpenAICoverLetterResult(
+        companyForProcessing,
+        position,
+        job,
+        language,
+        words,
+        searchCompanyInfo,
+        dryRun
+      )
+    : Promise.resolve('Not selected');
+
+  const anthropicCoverLetterPromise = runAnthropic
+    ? getAnthropicCoverLetterResult(
+        companyForProcessing,
+        position,
+        job,
+        language,
+        words,
+        searchCompanyInfo,
+        dryRun
+      )
+    : Promise.resolve('Not selected');
 
   const [
     geminiCVResponse,
@@ -243,6 +271,7 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     results: finalResults,
     csrfToken: csrfTokenValue,
     formError: null,
+    selectedCombination,
   });
 });
 
@@ -256,6 +285,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
       csrfToken: (req as any).csrfToken ? (req as any).csrfToken() : '',
       formError:
         'Invalid form submission token. Please refresh the page and try again. Ensure cookies are enabled in your browser.',
+      selectedCombination: 'openai-gemini',
     });
   } else {
     next(err);

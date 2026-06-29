@@ -90,6 +90,7 @@
       <% } %>
 
       <!-- Existing Row for Cover Letter Results -->
+      <% if (!isInitialLoad) { %>
       <h3 class="mt-4">Cover Letters</h3>
       <div class="row mt-3">
         <% if (selectedCombination === 'openai-gemini' || selectedCombination === 'gemini-anthropic') { %>
@@ -149,6 +150,7 @@
         </div>
         <% } %>
       </div>
+      <% } %>
 
       <h2 class="mt-4">Generate Documents</h2>
 

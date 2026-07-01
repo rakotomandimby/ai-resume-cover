@@ -3,14 +3,6 @@ export interface ConversationTurn {
   content: string;
 }
 
-// Multi-step cover letter prompting process:
-// 1. user: ask for help writing a cover letter (hardcoded)
-// 2. assistant: ask for the source professional history (hardcoded)
-// 3. user: provide the source professional history (from the markdown CV file)
-// 4. assistant: ask for the job description (hardcoded)
-// 5. user: provide the job description (from the web form input)
-// 6. assistant: ask what to do next (hardcoded)
-// 7. user: ask for the cover letter with language, word count, position, company
 export function getCoverLetterConversation(
   language: string,
   cv: string,
@@ -22,8 +14,8 @@ export function getCoverLetterConversation(
 ): ConversationTurn[] {
   if (language === 'French') {
     const finalPrompt = (searchCompanyInfo && company && company !== 'Unknown')
-      ? `S'il te plaît, rédiges une lettre de motivation de ${words} mots pour postuler au poste de "${position}" au sein de l'entreprise "${company}".`
-      : `S'il te plaît, rédiges une lettre de motivation de ${words} mots pour postuler au poste de "${position}".`;
+      ? `S'il te plaît, rédiges une lettre de motivation de ${words} mots en ${language} pour postuler au poste de "${position}" au sein de l'entreprise "${company}".`
+      : `S'il te plaît, rédiges une lettre de motivation de ${words} mots en ${language} pour postuler au poste de "${position}".`;
 
     return [
       { role: 'user', content: "Peux-tu m'aider à rédiger une lettre de motivation ?" },
@@ -36,8 +28,8 @@ export function getCoverLetterConversation(
     ];
   } else {
     const finalPrompt = (searchCompanyInfo && company && company !== 'Unknown')
-      ? `Please write a ${words} words cover letter to apply for the "${position}" position at the "${company}" company.`
-      : `Please write a ${words} words cover letter to apply for the "${position}" position.`;
+      ? `Please write a ${words} words cover letter in ${language} to apply for the "${position}" position at the "${company}" company.`
+      : `Please write a ${words} words cover letter in ${language} to apply for the "${position}" position.`;
 
     return [
       { role: 'user', content: "Can you help me write a cover letter?" },

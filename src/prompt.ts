@@ -3,6 +3,14 @@ export interface ConversationTurn {
   content: string;
 }
 
+// Multi-step cover letter prompting process:
+// 1. user: ask for help writing a cover letter (hardcoded)
+// 2. assistant: ask for the source professional history (hardcoded)
+// 3. user: provide the source professional history (from the markdown CV file)
+// 4. assistant: ask for the job description (hardcoded)
+// 5. user: provide the job description (from the web form input)
+// 6. assistant: ask what to do next (hardcoded)
+// 7. user: ask for the cover letter with language, word count, position, company
 export function getCoverLetterConversation(
   language: string,
   cv: string,
@@ -43,6 +51,14 @@ export function getCoverLetterConversation(
   }
 }
 
+// Multi-step CV prompting process:
+// 1. user: ask for help generating a tailored CV (hardcoded)
+// 2. assistant: ask for the source professional history (hardcoded)
+// 3. user: provide the source professional history (from the markdown CV file)
+// 4. assistant: ask for the job description (hardcoded)
+// 5. user: provide the job description (from the web form input)
+// 6. assistant: ask what to do next (hardcoded)
+// 7. user: ask for the tailored CV based on the position and job description
 export function getCVConversation(
   language: string,
   cv: string,

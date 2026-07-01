@@ -3,7 +3,7 @@ import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } from './system-instruction';
 import { nl2br, nullToEmptyString, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'gpt-5.4';  
+const model_to_use = 'gpt-5.5';  
 
 export async function getOpenAICoverLetterResult(
   company: string,
@@ -34,7 +34,9 @@ export async function getOpenAICoverLetterResult(
     messages: messages,
     model: model_to_use
   });  
-  return nl2br(nullToEmptyString(chatCompletion.choices[0].message.content));
+  
+  const content = chatCompletion.choices?.[0]?.message?.content ?? null;
+  return nl2br(nullToEmptyString(content));
 }
 
 export async function getOpenAICVResult(
@@ -62,6 +64,8 @@ export async function getOpenAICVResult(
     messages: messages,
     model: model_to_use
   });
-  return removeMarkdownCodeBlocks(nullToEmptyString(chatCompletion.choices[0].message.content));
+  
+  const content = chatCompletion.choices?.[0]?.message?.content ?? null;
+  return removeMarkdownCodeBlocks(nullToEmptyString(content));
 }
 

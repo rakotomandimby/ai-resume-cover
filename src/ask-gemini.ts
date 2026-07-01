@@ -28,11 +28,12 @@ export async function getGeminiCoverLetterResult(
   const client = new GoogleGenAI({ apiKey: getAPIKey("gemini") });
   const interaction = await client.interactions.create({
     model: model_to_use,
-    systemInstruction: getSystemInstructionCoverLetter(company, language, searchCompanyInfo),
+    system_instruction: getSystemInstructionCoverLetter(company, language, searchCompanyInfo),
     input: prompt
   });
   
-  const text = interaction.steps.at(-1)?.content?.[0]?.text || "";
+  const lastStep = interaction.steps?.at(-1) as any;
+  const text = lastStep?.content?.[0]?.text || "";
   return nl2br(text);
 }
 
@@ -55,11 +56,12 @@ export async function getGeminiCVResult(
   const client = new GoogleGenAI({ apiKey: getAPIKey("gemini") });
   const interaction = await client.interactions.create({
     model: model_to_use,
-    systemInstruction: getSystemInstructionCV(language),
+    system_instruction: getSystemInstructionCV(language),
     input: prompt
   });
   
-  const text = interaction.steps.at(-1)?.content?.[0]?.text || "";
+  const lastStep = interaction.steps?.at(-1) as any;
+  const text = lastStep?.content?.[0]?.text || "";
   return removeMarkdownCodeBlocks(text);
 }
 

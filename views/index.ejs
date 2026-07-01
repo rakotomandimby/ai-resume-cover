@@ -24,7 +24,9 @@
         </div>
       <% } %>
 
+      <% if (!isInitialLoad) { %>
       <h2 class="mt-4">Generated Documents</h2>
+      <% } %>
 
       <!-- New Row for CV Results -->
       <% if (!isInitialLoad) { %>
@@ -267,4 +269,3 @@
     </script>
   </body>
 </html>
-

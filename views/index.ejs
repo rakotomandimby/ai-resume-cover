@@ -177,6 +177,14 @@
           <input type="checkbox" class="form-check-input" id="searchCompany" name="searchCompany" value="true" checked>
           <label class="form-check-label" for="searchCompany">Attempt to use specific information about the company (if name provided)</label>
         </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="enableSpecialInstructions" name="enableSpecialInstructions" value="true" checked>
+          <label class="form-check-label" for="enableSpecialInstructions">Add special instructions / custom guidance for the cover letter</label>
+        </div>
+        <div class="mb-3">
+          <label for="specialInstructions" class="form-label" id="specialInstructionsLabel">Special instructions</label>
+          <textarea id="specialInstructions" class="form-control" rows="3" name="specialInstructions" placeholder="E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc."></textarea>
+        </div>
         <div class="mb-3">
           <label for="position" class="form-label">Position</label>
           <input type="text" class="form-control" id="position" placeholder="Enter position" name="position">
@@ -265,7 +273,28 @@
 
         searchCompanyCheckbox.addEventListener('change', updateCompanyInputState);
         updateCompanyInputState();
+
+        const enableSpecialInstructionsCheckbox = document.getElementById('enableSpecialInstructions');
+        const specialInstructionsTextarea = document.getElementById('specialInstructions');
+        const specialInstructionsLabel = document.getElementById('specialInstructionsLabel');
+
+        function updateSpecialInstructionsState() {
+          if (enableSpecialInstructionsCheckbox.checked) {
+            specialInstructionsTextarea.readOnly = false;
+            specialInstructionsTextarea.placeholder = "E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc.";
+            specialInstructionsLabel.textContent = "Special instructions";
+          } else {
+            specialInstructionsTextarea.value = '';
+            specialInstructionsTextarea.readOnly = true;
+            specialInstructionsTextarea.placeholder = "Special instructions are disabled";
+            specialInstructionsLabel.textContent = "Special instructions (disabled)";
+          }
+        }
+
+        enableSpecialInstructionsCheckbox.addEventListener('change', updateSpecialInstructionsState);
+        updateSpecialInstructionsState();
       });
     </script>
   </body>
 </html>
+

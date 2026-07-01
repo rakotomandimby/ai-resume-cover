@@ -124,6 +124,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
   const { job, language, position, words, token: submittedToken, providersCombination } = req.body;
   const companyFromRequest = req.body.company;
   const searchCompanyInfo = req.body.searchCompany === 'true';
+  const enableSpecialInstructions = req.body.enableSpecialInstructions === 'true';
+  const specialInstructions = req.body.specialInstructions || '';
 
   const validCombinations = ['openai-gemini', 'openai-anthropic', 'gemini-anthropic'];
   const selectedCombination = validCombinations.includes(providersCombination) ? providersCombination : 'openai-gemini';
@@ -197,6 +199,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
         language,
         words,
         searchCompanyInfo,
+        enableSpecialInstructions,
+        specialInstructions,
         dryRun
       )
     : Promise.resolve('Not selected');
@@ -209,6 +213,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
         language,
         words,
         searchCompanyInfo,
+        enableSpecialInstructions,
+        specialInstructions,
         dryRun
       )
     : Promise.resolve('Not selected');
@@ -221,6 +227,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
         language,
         words,
         searchCompanyInfo,
+        enableSpecialInstructions,
+        specialInstructions,
         dryRun
       )
     : Promise.resolve('Not selected');

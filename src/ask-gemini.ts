@@ -12,6 +12,8 @@ export async function getGeminiCoverLetterResult(
   language: string,
   words: string,
   searchCompanyInfo: boolean,
+  enableSpecialInstructions: boolean,
+  specialInstructions: string,
   dryRun: boolean = false
 ): Promise<string> {
   if (dryRun) {
@@ -20,7 +22,17 @@ export async function getGeminiCoverLetterResult(
   }
 
   const cv = getBaseCV(language);
-  const turns = getCoverLetterConversation(language, cv, job, position, company, words, searchCompanyInfo);
+  const turns = getCoverLetterConversation(
+    language,
+    cv,
+    job,
+    position,
+    company,
+    words,
+    searchCompanyInfo,
+    enableSpecialInstructions,
+    specialInstructions
+  );
   
   // Map the multi-step conversation turns into a structured prompt string for Gemini
   const prompt = turns.map(turn => `${turn.role === 'user' ? 'User' : 'Assistant'}: ${turn.content}`).join('\n\n');

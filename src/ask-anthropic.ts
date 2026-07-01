@@ -12,6 +12,8 @@ export async function getAnthropicCoverLetterResult(
   language: string,
   words: string,
   searchCompanyInfo: boolean,
+  enableSpecialInstructions: boolean,
+  specialInstructions: string,
   dryRun: boolean = false
 ): Promise<string> {
   if (dryRun) {
@@ -20,7 +22,17 @@ export async function getAnthropicCoverLetterResult(
   }
 
   const cv = getBaseCV(language);
-  const turns = getCoverLetterConversation(language, cv, job, position, company, words, searchCompanyInfo);
+  const turns = getCoverLetterConversation(
+    language,
+    cv,
+    job,
+    position,
+    company,
+    words,
+    searchCompanyInfo,
+    enableSpecialInstructions,
+    specialInstructions
+  );
   const messages = turns.map(turn => ({
     role: turn.role,
     content: turn.content

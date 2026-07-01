@@ -1,27 +1,74 @@
-export function getPromptCoverLetter(language: string, company: string, position: string, words: string, searchCompanyInfo: boolean): string { // Renamed from getPrompt
-  if (language === 'French') {
-    if (searchCompanyInfo && company && company !== 'Unknown') {
-      return 'Écris une lettre de motivation de ' + words + ' mots pour postuler au poste "' + position + '" dans la société "' + company + '".';
-    }
-    return 'Écris une lettre de motivation de ' + words + ' mots pour postuler au poste "' + position + '".';
-  }
-  if (language === 'English') {
-    if (searchCompanyInfo && company && company !== 'Unknown') {
-      return 'Write a ' + words + ' words cover letter to apply for the "' + position + '" position at the "' + company + '" company.';
-    }
-    return 'Write a ' + words + ' words cover letter to apply for the "' + position + '" position.';
-  }
-  return '';
+export interface ConversationTurn {
+  role: 'user' | 'assistant';
+  content: string;
 }
 
-// New function for CV prompt
-export function getPromptCV(language: string, jobDescription: string, position: string): string {
+export function getCoverLetterConversation(
+  language: string,
+  cv: string,
+  job: string,
+  position: string,
+  company: string,
+  words: string,
+  searchCompanyInfo: boolean
+): ConversationTurn[] {
   if (language === 'French') {
-    return `En te basant sur la description de poste suivante pour le rôle de "${position}", génère un CV personnalisé. La description de poste est : "${jobDescription}".`;
+    const finalPrompt = (searchCompanyInfo && company && company !== 'Unknown')
+      ? `S'il te plaît, rédiges une lettre de motivation de ${words} mots pour postuler au poste de "${position}" au sein de l'entreprise "${company}".`
+      : `S'il te plaît, rédiges une lettre de motivation de ${words} mots pour postuler au poste de "${position}".`;
+
+    return [
+      { role: 'user', content: "Peux-tu m'aider à rédiger une lettre de motivation ?" },
+      { role: 'assistant', content: "Bien sûr, veuillez fournir votre historique professionnel source." },
+      { role: 'user', content: cv },
+      { role: 'assistant', content: "Merci. Maintenant, veuillez fournir la description du poste." },
+      { role: 'user', content: job },
+      { role: 'assistant', content: "C'est noté. Que voulez-vous que je fasse ensuite ?" },
+      { role: 'user', content: finalPrompt }
+    ];
+  } else {
+    const finalPrompt = (searchCompanyInfo && company && company !== 'Unknown')
+      ? `Please write a ${words} words cover letter to apply for the "${position}" position at the "${company}" company.`
+      : `Please write a ${words} words cover letter to apply for the "${position}" position.`;
+
+    return [
+      { role: 'user', content: "Can you help me write a cover letter?" },
+      { role: 'assistant', content: "Sure, please provide your source professional history." },
+      { role: 'user', content: cv },
+      { role: 'assistant', content: "Thank you. Now please provide the job description." },
+      { role: 'user', content: job },
+      { role: 'assistant', content: "Got it. What would you like me to do next?" },
+      { role: 'user', content: finalPrompt }
+    ];
   }
-  if (language === 'English') {
-    return `Based on the following job description for the "${position}" role, generate a tailored CV. The job description is: "${jobDescription}".`;
+}
+
+export function getCVConversation(
+  language: string,
+  cv: string,
+  job: string,
+  position: string
+): ConversationTurn[] {
+  if (language === 'French') {
+    return [
+      { role: 'user', content: "Peux-tu m'aider à générer un CV personnalisé ?" },
+      { role: 'assistant', content: "Bien sûr, veuillez fournir votre historique professionnel source." },
+      { role: 'user', content: cv },
+      { role: 'assistant', content: "Merci. Maintenant, veuillez fournir la description du poste." },
+      { role: 'user', content: job },
+      { role: 'assistant', content: "C'est noté. Que voulez-vous que je fasse ensuite ?" },
+      { role: 'user', content: `En te basant sur la description de poste fournie pour le rôle de "${position}", génère un CV personnalisé.` }
+    ];
+  } else {
+    return [
+      { role: 'user', content: "Can you help me generate a tailored CV?" },
+      { role: 'assistant', content: "Sure, please provide your source professional history." },
+      { role: 'user', content: cv },
+      { role: 'assistant', content: "Thank you. Now please provide the job description." },
+      { role: 'user', content: job },
+      { role: 'assistant', content: "Got it. What would you like me to do next?" },
+      { role: 'user', content: `Based on the provided job description for the "${position}" role, generate a tailored CV.` }
+    ];
   }
-  return '';
 }
 

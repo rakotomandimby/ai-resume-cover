@@ -28,6 +28,68 @@
       <h2 class="mt-4">Generated Documents</h2>
       <% } %>
 
+      <!-- Existing Row for Cover Letter Results -->
+      <% if (!isInitialLoad) { %>
+      <h3 class="mt-4">Cover Letters</h3>
+      <div class="row mt-3">
+        <% if (selectedCombination === 'openai-gemini' || selectedCombination === 'gemini-anthropic') { %>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Gemini Cover Letter Result
+            </div>
+            <div class="card-body" id="geminiCoverLetterResult" style="white-space: pre-wrap;">
+              <% if (results.geminiCoverLetter.status === 'error') { %>
+                <div class="alert alert-danger mb-0"><%= results.geminiCoverLetter.content %></div>
+              <% } else if (results.geminiCoverLetter.status === 'idle') { %>
+                <p class="text-muted mb-0"><%= results.geminiCoverLetter.content %></p>
+              <% } else { %>
+                <%- results.geminiCoverLetter.content %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+        <% if (selectedCombination === 'openai-gemini' || selectedCombination === 'openai-anthropic') { %>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              OpenAI Cover Letter Result
+            </div>
+            <div class="card-body" id="openAICoverLetterResult" style="white-space: pre-wrap;">
+              <% if (results.openAICoverLetter.status === 'error') { %>
+                <div class="alert alert-danger mb-0"><%= results.openAICoverLetter.content %></div>
+              <% } else if (results.openAICoverLetter.status === 'idle') { %>
+                <p class="text-muted mb-0"><%= results.openAICoverLetter.content %></p>
+              <% } else { %>
+                <%- results.openAICoverLetter.content %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+        <% if (selectedCombination === 'openai-anthropic' || selectedCombination === 'gemini-anthropic') { %>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Anthropic Cover Letter Result
+            </div>
+            <div class="card-body" id="anthropicCoverLetterResult" style="white-space: pre-wrap;">
+              <% if (results.anthropicCoverLetter.status === 'error') { %>
+                <div class="alert alert-danger mb-0"><%= results.anthropicCoverLetter.content %></div>
+              <% } else if (results.anthropicCoverLetter.status === 'idle') { %>
+                <p class="text-muted mb-0"><%= results.anthropicCoverLetter.content %></p>
+              <% } else { %>
+                <%- results.anthropicCoverLetter.content %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <% } %>
       <!-- New Row for CV Results -->
       <% if (!isInitialLoad) { %>
       <h3 class="mt-3">Tailored CVs</h3>
@@ -91,68 +153,6 @@
       </div>
       <% } %>
 
-      <!-- Existing Row for Cover Letter Results -->
-      <% if (!isInitialLoad) { %>
-      <h3 class="mt-4">Cover Letters</h3>
-      <div class="row mt-3">
-        <% if (selectedCombination === 'openai-gemini' || selectedCombination === 'gemini-anthropic') { %>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              Gemini Cover Letter Result
-            </div>
-            <div class="card-body" id="geminiCoverLetterResult" style="white-space: pre-wrap;">
-              <% if (results.geminiCoverLetter.status === 'error') { %>
-                <div class="alert alert-danger mb-0"><%= results.geminiCoverLetter.content %></div>
-              <% } else if (results.geminiCoverLetter.status === 'idle') { %>
-                <p class="text-muted mb-0"><%= results.geminiCoverLetter.content %></p>
-              <% } else { %>
-                <%- results.geminiCoverLetter.content %>
-              <% } %>
-            </div>
-          </div>
-        </div>
-        <% } %>
-
-        <% if (selectedCombination === 'openai-gemini' || selectedCombination === 'openai-anthropic') { %>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              OpenAI Cover Letter Result
-            </div>
-            <div class="card-body" id="openAICoverLetterResult" style="white-space: pre-wrap;">
-              <% if (results.openAICoverLetter.status === 'error') { %>
-                <div class="alert alert-danger mb-0"><%= results.openAICoverLetter.content %></div>
-              <% } else if (results.openAICoverLetter.status === 'idle') { %>
-                <p class="text-muted mb-0"><%= results.openAICoverLetter.content %></p>
-              <% } else { %>
-                <%- results.openAICoverLetter.content %>
-              <% } %>
-            </div>
-          </div>
-        </div>
-        <% } %>
-
-        <% if (selectedCombination === 'openai-anthropic' || selectedCombination === 'gemini-anthropic') { %>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              Anthropic Cover Letter Result
-            </div>
-            <div class="card-body" id="anthropicCoverLetterResult" style="white-space: pre-wrap;">
-              <% if (results.anthropicCoverLetter.status === 'error') { %>
-                <div class="alert alert-danger mb-0"><%= results.anthropicCoverLetter.content %></div>
-              <% } else if (results.anthropicCoverLetter.status === 'idle') { %>
-                <p class="text-muted mb-0"><%= results.anthropicCoverLetter.content %></p>
-              <% } else { %>
-                <%- results.anthropicCoverLetter.content %>
-              <% } %>
-            </div>
-          </div>
-        </div>
-        <% } %>
-      </div>
-      <% } %>
 
       <h2 class="mt-4">Generate Documents</h2>
 

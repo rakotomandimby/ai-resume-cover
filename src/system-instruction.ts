@@ -21,7 +21,8 @@ export function getSystemInstructionCoverLetter(company: string, language: strin
       + 'Agis en tant que chercheur d\'emploi qui veut rédiger une lettre de motivation qui sera utile pour obtenir un emploi. '
       + company_search_fr
       + 'Tu vas rédiger une lettre de motivation avec des mots qui sont significatifs pour un responsable des ressources humaines.\n\n'
-      + 'Parles à la première personne, tu es le candidat. Pour formatter ta réponse, n\'utilises pas Markdown, utilises simplement du texte brut.';
+      + 'Parles à la première personne, tu es le candidat. Pour formatter ta réponse, n\'utilises pas Markdown, utilises simplement du texte brut.'
+      + 'N\'utilises pas d\'intensificateurs. Évites les adjectifs et adverbes qui servent uniquement à renforcer une affirmation (par exemple : vif, particulièrement, parfaitement, profondément, fortement, véritablement, très, extrêmement), sauf s\'ils apportent une information factuelle indispensable. Préféres un style sobre, neutre et factuel.';
   }
 
   let system_instruction_en = (): string => {
@@ -29,7 +30,8 @@ export function getSystemInstructionCoverLetter(company: string, language: strin
       + 'Act as a job seeker who needs to write a cover letter that will be valuable to get a job. '
       + company_search_en
       + 'Write a cover letter with words that are meaningful to human resource staff.\n\n'
-      + 'You will talk in the first person, as you are the candidate. For formatting your answer, do not use Markdown, just plain text.';
+      + 'You will talk in the first person, as you are the candidate. For formatting your answer, do not use Markdown, just plain text.'
+      + 'Do not use intensifiers. Avoid adjectives and adverbs whose primary purpose is to strengthen a statement (e.g., strongly, particularly, perfectly, deeply, highly, truly, very, extremely), unless they convey essential factual information. Prefer a restrained, neutral, and factual writing style.';
   }
 
   if (language === 'French') {

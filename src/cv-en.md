@@ -50,6 +50,10 @@
         - Choose and establish virtualization platform (VMWare ESX on 3 physical hosts)
         - Choose and establish DevOps tooling (Kubernetes, Jenkins)
         - Choose and establish security, backup and update strategy
+    - Implement and run the call center IT Infrastructure
+        - Configure and run the Asterisk PBX cluster and teir AGI and AMI features (PHP, Typescript)
+        - Configure and run the call center performance dashboard (PHP, React, PostgreSQL)
+        - Secure the data and the infrastructure (Firewall, VPN, Backup, Update)
 - Project Manager for Ibonia from 2020 to 2021
     - Develop, deploy and maintain a host-to-host system for validating bank transfers between Airtel and Bank of Africa
     - Evolve the settings of a code generation application (Codesmith) for developers (PHP, XML)

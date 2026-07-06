@@ -50,6 +50,10 @@
         - Choisir et mettre en place la plateforme de virtualisation (VMWare ESX sur 3 hôtes physiques)
         - Choisir et mettre en place les outils DevOps (Kubernetes, Jenkins)
         - Choisir et mettre en place la stratégie de sécurité, sauvegarde et mise à jour
+    - Mise en place et administration de l'infrastructure informatique du centre d'appels
+        - Configurer et administrer le cluster Asterisk PBX et ses fonctionnalités AGI et AMI (PHP, Typescript)
+        - Configurer et administrer le tableau de bord de performance du centre d'appels (PHP, React, PostgreSQL)
+        - Sécuriser les données et l'infrastructure (pare-feu, VPN, sauvegarde, mise à jour)
 - Chef de projet pour Ibonia de 2020 à 2021
     - Développement, déploiement et maintenance d'un système host-to-host de validation des virements bancaires entre Airtel et Bank of Africa
     - Evolution des paramétrages d'une application de géneration de code (Codesmith) pour les développeurs (PHP, XML)

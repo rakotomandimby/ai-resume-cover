@@ -11,132 +11,132 @@
 
 # Key skills
 
-- Lead Web developers coding with PHP and Typescript to best practices
-- Optimize automation in sotfware factory (from Devs to Ops, back and forth)
-- Information technology infrastructure cost killer
+- Lead Web developers coding with PHP and TypeScript according to best practices
+- Optimize automation in the software factory (from Devs to Ops, back and forth)
+- Reduce information technology infrastructure costs
 
 # Detailed career path
 
-- Chief Information Officer at Inviso Group from november 2025 to april 2026
+- Chief Information Officer at Inviso Group from November 2025 to April 2026
     - Oversee the company's IT strategy and infrastructure to ensure alignment with business goals.
     - Lead a team of IT professionals to implement and maintain technology solutions that enhance operational efficiency.
-    - Lead Sage ERP configurations, accounting, human resources management and business intelligence to uniform the setup across the different companies of the group.
-- PHP Developers Performance Manager at Frennly fron february 2025 december 2025
-    - Develop and implement strategies to improve operational efficiency of 25 PHP developers.
+    - Lead Sage ERP configurations, accounting, human resources management, and business intelligence to unify the setup across the different companies of the group.
+- PHP Developers Performance Manager at Frennly from February 2025 to December 2025
+    - Develop and implement strategies to improve the operational efficiency of 25 PHP developers.
     - Establish metrics, benchmarks, and goals to monitor and evaluate performance improvement initiatives.
     - Collaborate with cross-functional teams to design and implement process improvements and best practices.
-- Lead Developer for LogicRDV from april 2025 to april 2026
+- Lead Developer for LogicRDV from April 2025 to April 2026
     - Lead a team of 6 developers to build a web application for managing appointments and schedules.
-    - NodeJS stack with Typescript, React, MariaDB, Redis and Kafka.
+    - Node.js stack with TypeScript, React, MariaDB, Redis, and Kafka.
     - Deployment on AWS with Docker and Kubernetes.
 - Contributor to the "CopilotChat.nvim" Neovim plugin (https://github.com/CopilotC-Nvim/CopilotChat.nvim)
-    - A Neovim plugin meaning to be the equivalent or better VSCode Github CopilotChat
-    - Iterative improvements and bugfixes
+    - A Neovim plugin intended to be the equivalent of, or better than, VSCode GitHub Copilot Chat
+    - Iterative improvements and bug fixes
     - Documentation completion
-- VoIP Asterisk consultant for Color Telecom and Tel-On from january 2024 to october 2025
+- VoIP Asterisk consultant for Color Telecom and Tel-On from October 2024 to October 2025
     - Voice over IP (VoIP) infrastructure architect.
-    - Core IP PBX Asterisk AGI and AMI features development, using PHP and Typescript languages.
-    - Linux infrastructure architect on both physical servers and Cloud (VMWare).
+    - Core IP PBX Asterisk AGI and AMI features development, using PHP and TypeScript.
+    - Linux infrastructure architect on both physical servers and cloud platforms (VMware).
 - Author of the "code-ai.nvim" Neovim plugin (https://github.com/rakotomandimby/code-ai.nvim)
     - A Neovim plugin to use AI models in the Neovim editor.
     - Supports OpenAI, Google Gemini, and Anthropic AI models.
     - Strong context management to provide relevant answers from the AI models.
-- Information Technology Architect at Intelios from 2020 to 2024
-    - Drive Coding Standards
-        - Establish Coding standards and according CI/CD tools and configuration (Jenkins)
+- Information Technology Architect at Intelios from March 2020 to October 2024
+    - Drive coding standards
+        - Establish coding standards and the corresponding CI/CD tools and configuration (Jenkins)
         - Train newcomers to the established standards
-        - Establish developers list of tools (WebStorm, PHPStorm, GitHub)
-    - Architect and Manage Infrastructure
-        - Choose and establish virtualization platform (VMWare ESX on 3 physical hosts)
+        - Establish the developers' toolset (WebStorm, PhpStorm, GitHub)
+    - Architect and manage infrastructure
+        - Choose and establish the virtualization platform (VMware ESX on 3 physical hosts)
         - Choose and establish DevOps tooling (Kubernetes, Jenkins)
-        - Choose and establish security, backup and update strategy
-    - Implement and run the call center IT Infrastructure
-        - Configure and run the Asterisk PBX cluster and teir AGI and AMI features (PHP, Typescript)
+        - Choose and establish the security, backup, and update strategy
+    - Implement and run the call center IT infrastructure
+        - Configure and run the Asterisk PBX cluster and its AGI and AMI features (PHP, TypeScript)
         - Configure and run the call center performance dashboard (PHP, React, PostgreSQL)
-        - Secure the data and the infrastructure (Firewall, VPN, Backup, Update)
+        - Secure the data and the infrastructure (firewall, VPN, backup, updates)
 - Project Manager for Ibonia from 2020 to 2021
-    - Develop, deploy and maintain a host-to-host system for validating bank transfers between Airtel and Bank of Africa
+    - Develop, deploy, and maintain a host-to-host system for validating bank transfers between Airtel and Bank of Africa
     - Evolve the settings of a code generation application (Codesmith) for developers (PHP, XML)
-    - Launch a platform for optimizing restaurant booking (PHP, React, Neo4j + MySQL)
-- DevOps Team Lead at SDWorx Mauritius from november 2019 to august 2020
-    - Drive sessions to write down and adopt DevOps standards
-    - Maximize automation everywhere it is possible (Ranorex, NewMan)
+    - Launch a platform for optimizing restaurant bookings (PHP, React, Neo4j + MySQL)
+- DevOps Team Lead at SDWorx Mauritius from November 2019 to August 2020
+    - Drive sessions to define and adopt DevOps standards
+    - Maximize automation wherever possible (Ranorex, Newman)
     - Migrate Classic Azure Pipelines to YAML Azure Pipelines
-    - Develop applications in C# / .Net Core
-    - Part of making the company a great place to work (GPTW 2020)
-- Self-employed, enterprise oriented IT consultant from February 2019 to November 2019
-    - Orange Madagascar (Major telecommunication actor): Project Manager on the refactoring of the B2B related applications (Java, Angular, Atlassian forge and CI/CD)
-    - Arawak (Textile factory): Coach for the IT team (Jira setup, reporting)
-    - ATS (Business Process Outsourcing): Project Manager on a performance management tool for  about 1000 collaborators (React, Symfony, Jenkins CI/CD)
-    - DevFest Madagascar: Speaker at the 2019 to 2022 DevFest sessions organized by the Google Develpers group in Madagascar
+    - Develop applications in C# / .NET Core
+    - Contribute to making the company a great place to work (GPTW 2020)
+- Self-employed, enterprise-oriented IT consultant from February 2019 to November 2019
+    - Orange Madagascar (major telecommunications company): Project Manager on the refactoring of B2B-related applications (Java, Angular, Atlassian Forge, and CI/CD)
+    - Arawak (textile factory): Coach for the IT team (Jira setup, reporting)
+    - ATS (Business Process Outsourcing): Project Manager on a performance management tool for about 1000 collaborators (React, Symfony, Jenkins CI/CD)
+    - DevFest Madagascar: Speaker at the 2019 to 2022 DevFest sessions organized by the Google Developers Group in Madagascar
 - Chief Academic Officer at ESTI (IT University) from November 2016 to February 2019
-    - Manage Information Technology and / Computer Science related PhD level teachers (Syllabus validation)
+    - Manage Information Technology and Computer Science PhD-level teachers (syllabus validation)
     - Drive teaching to meet the required level of the IT industry
-    - Manage relationship with enterprises
-    - Coordinate the Information System to reflect the philosophy of the institute
-- Senior DevOps engineer at Netapsys from January 2014 to November 2016 
+    - Manage relationships with enterprises
+    - Coordinate the information system to reflect the philosophy of the institute
+- Senior DevOps Engineer at Netapsys from January 2014 to November 2016
     - System administration industrialization
         - CFEngine configuration management
         - Collectd, Graphite, Sensu monitoring
-    - Docker registry & images buiding (Artifactory and Docker Distribution)
-        - PHP and Java toolchains containers
-        - CentOS & Debian packaging
-    - High availability server architecture building
+    - Docker registry and image building (Artifactory and Docker Distribution)
+        - PHP and Java toolchain containers
+        - CentOS and Debian packaging
+    - High-availability server architecture building
         - Nginx and PHP-FPM (Magento, Drupal)
         - Percona SQL cluster
-    - Support for  about 400 Java & PHP engineers
-        - Atlassian Jira & Confluence setup, configuration, administration
-        - VMware ESX and vCenter setup, configuration, administration
-- Training, Recruitement and Development Manager at Ideo Neov from August 2011 to December 2013
-    - Technical comittee member
-    - Project Management (technical & functional)
+    - Support for about 400 Java and PHP engineers
+        - Atlassian Jira and Confluence setup, configuration, and administration
+        - VMware ESX and vCenter setup, configuration, and administration
+- Training, Recruitment, and Development Manager at Ideo Neov from August 2011 to December 2013
+    - Technical committee member
+    - Project management (technical and functional)
     - CONSULTING
         - Enterprise social network advisor
         - Linux infrastructure advisor
     - TRAINING: Conduct and supervise training and development programs for 60+ employees about:
-        - Source Code management (Hg, Git, SVN)
-        - Object Oriented Programing (PHP, Javascript)
-        - Agile Methods (Scrum)
-        - Test Driven Development
+        - Source code management (Hg, Git, SVN)
+        - Object-oriented programming (PHP, JavaScript)
+        - Agile methods (Scrum)
+        - Test-Driven Development
         - Design Patterns
     - RECRUITMENT
-        - High skill engineers and mathematician recruitment
-        - Newcomers training to internat tools, workflow & practice
-        - Evaluation: interpretation, decision.
+        - Recruit highly skilled engineers and mathematicians
+        - Train newcomers on internal tools, workflows, and practices
+        - Evaluation: interpretation and decision-making
 - Teacher at the University of Antananarivo from November 2012 to June 2013
-    - Teaching Database applied to MySQL to Masters students.
-        - Introduction to database
+    - Teaching databases applied to MySQL to Master's students.
+        - Introduction to databases
         - Database administration
-        - Query optimisation
+        - Query optimization
 - Manager at Blueline Business Service from November 2010 to August 2011
-    - Top 50 Enterprise Blueline Internet Service Provider customer support
-    - IT Engineer team technical mentor
-    - Large scale network administration.
-    - Commercial & Financial management
-        - Profits & priority identification
-        - Products evolution
+    - Support for the top 50 enterprise customers of Blueline Internet Service Provider
+    - Technical mentor for the IT engineer team
+    - Large-scale network administration
+    - Commercial and financial management
+        - Identification of profits and priorities
+        - Product evolution
         - Customer care
-    - Experience and knowledge transmission to the growing team members.
-- IT Architect at Gulfsat Madagascar (Major telecommunication actor) from June 2009 to November 2010 
+    - Transfer experience and knowledge to the growing team members
+- IT Architect at Gulfsat Madagascar (major telecommunications company) from June 2009 to November 2010
     - UNIX System Administrator and Architect:
-        - Virtualization: KVM, LXC and OpenVZ
+        - Virtualization: KVM, LXC, and OpenVZ
         - Storage: NFS, RAID, LVM
-        - Mail Server: Postfix, Exim, Courier POP/IMAP
-        - FreeRADIUS Accounting
-        - Database: PostGreSQL, MySQL
-        - Directory: OpenLDAP
-- Project Manager at Vectoris from August 2008 to May 2009 
-    - Developers team leader.
-    - Production was about Interactive Websites coded in
-        - Java, PHP, Python, Perl.
-        - Javascript used through jQuery and Mootools
-    - Linux dedicated Web servers System Administrator
+        - Mail server: Postfix, Exim, Courier POP/IMAP
+        - FreeRADIUS accounting
+        - Databases: PostgreSQL, MySQL
+        - Directory services: OpenLDAP
+- Project Manager at Vectoris from August 2008 to May 2009
+    - Developers team leader
+    - Production involved interactive websites coded in:
+        - Java, PHP, Python, Perl
+        - JavaScript used through jQuery and MooTools
+    - Linux dedicated web server system administrator
 - Developer at Mixid from September 2007 to November 2007 (3 months):
-    - PHP & Javascript direct interface to MySQL tables
-- Sytem Administrator, Database administrator, Developer at Medical Administrators International, from February 2007 to August 2007:
-    - MySql Database query optimization
-    - PHP3 code maintainance
+    - PHP and JavaScript direct interface to MySQL tables
+- System Administrator, Database Administrator, Developer at Medical Administrators International, from February 2007 to August 2007:
+    - MySQL database query optimization
+    - PHP3 code maintenance
     - FreeBSD server administration
 - Joomla templater at Edicom from 2007 to 2007 (less than a year).
 - Trainee at Nuxeo from July 2003 to September 2003 (3 months):
-    - Understand the internals of the CPS CMS written un Python over Zope.
+    - Understand the internals of the CPS CMS written in Python on top of Zope.

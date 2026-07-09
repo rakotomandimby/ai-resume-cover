@@ -11,9 +11,9 @@
 
 # Compétences clés
 
-- Direction des développeurs Web utilisant PHP et Typescript dans l'adoption des "best practices"
+- Direction des développeurs Web utilisant PHP et TypeScript dans l'adoption des bonnes pratiques
 - Industrialisation et automatisation de la chaîne de production logicielle (de Devs à Ops, et vice-versa)
-- Réduction des coûts des infrastructures informatique
+- Réduction des coûts des infrastructures informatiques
 
 # Parcours professionnel détaillé
 
@@ -24,68 +24,68 @@
 - Responsable de la performance des développeurs PHP chez Frennly de février 2025 à décembre 2025
     - Développer et mettre en œuvre des stratégies pour améliorer l'efficacité opérationnelle de 25 développeurs PHP.
     - Établir des indicateurs, des références et des objectifs pour surveiller et évaluer les initiatives d'amélioration des performances.
-    - Collaborer de manière transverse pour améliorer les processus et les pratiques de dévloppement.
-- Lead Developer pour LogicRDV de avril 2025 à avril 2026
+    - Collaborer de manière transverse pour améliorer les processus et les bonnes pratiques de développement.
+- Lead Developer pour LogicRDV d'avril 2025 à avril 2026
     - Direction d'une équipe de 6 développeurs sur une application web de gestion des rendez-vous et des plannings.
-    - Pile technologique: NodeJS avec Typescript, React, MariaDB, Redis et Kafka.
+    - Pile technologique : Node.js avec TypeScript, React, MariaDB, Redis et Kafka.
     - Déploiement sur AWS avec Docker et Kubernetes.
 - Contributeur au plugin Neovim "CopilotChat.nvim" (https://github.com/CopilotC-Nvim/CopilotChat.nvim)
-    - Plugin Neovim visant à être l'équivalent de VSCode Github CopilotChat (ou mieux)
+    - Plugin Neovim visant à être l'équivalent de VSCode GitHub Copilot Chat, voire mieux
     - Améliorations itératives et corrections de bugs
     - Complétion de la documentation
-- Consultant VoIP Asterisk pour Color Telecom et Tel-On de janvier 2024 à octobre 2025
+- Consultant VoIP Asterisk pour Color Telecom et Tel-On d'octobre 2024 à octobre 2025
     - Architecte d'infrastructure Voix sur IP (VoIP)
-    - Développement de fonctionnalités Asterisk AGI et AMI pour le cœur de réseau IP PBX, en utilisant les langages PHP et Typescript
-    - Architecte d'infrastructure Linux sur serveurs physiques et Cloud (VMWare)
+    - Développement de fonctionnalités Asterisk AGI et AMI pour le cœur de réseau IP PBX, en utilisant les langages PHP et TypeScript
+    - Architecte d'infrastructure Linux sur serveurs physiques et plateformes cloud (VMware)
 - Auteur du plugin Neovim "code-ai.nvim" (https://github.com/rakotomandimby/code-ai.nvim)
     - Plugin Neovim pour utiliser des modèles d'IA dans l'éditeur Neovim.
     - Supporte les modèles d'IA OpenAI, Google Gemini et Anthropic.
-    - Provision de contexte avancé pour obtenir des réponses pertinentes des modèles d'IA.
-- Architecte en technologies de l'information chez Intelios de 2020 à 2024 
-    - Diriger l'établissement des convention de codage
+    - Gestion avancée du contexte pour obtenir des réponses pertinentes des modèles d'IA.
+- Architecte en technologies de l'information chez Intelios de mars 2020 à octobre 2024
+    - Diriger l'établissement des conventions de codage
         - Établir les normes de développement logiciel selon les outils et configurations CI/CD (Jenkins)
         - Former les nouveaux venus aux normes établies
-        - Établir la liste des outils pour les développeurs (WebStorm, PHPStorm, GitHub)
+        - Établir la liste des outils pour les développeurs (WebStorm, PhpStorm, GitHub)
     - Architecturer et administrer l'infrastructure informatique
-        - Choisir et mettre en place la plateforme de virtualisation (VMWare ESX sur 3 hôtes physiques)
+        - Choisir et mettre en place la plateforme de virtualisation (VMware ESX sur 3 hôtes physiques)
         - Choisir et mettre en place les outils DevOps (Kubernetes, Jenkins)
         - Choisir et mettre en place la stratégie de sécurité, sauvegarde et mise à jour
     - Mise en place et administration de l'infrastructure informatique du centre d'appels
-        - Configurer et administrer le cluster Asterisk PBX et ses fonctionnalités AGI et AMI (PHP, Typescript)
+        - Configurer et administrer le cluster Asterisk PBX et ses fonctionnalités AGI et AMI (PHP, TypeScript)
         - Configurer et administrer le tableau de bord de performance du centre d'appels (PHP, React, PostgreSQL)
-        - Sécuriser les données et l'infrastructure (pare-feu, VPN, sauvegarde, mise à jour)
+        - Sécuriser les données et l'infrastructure (pare-feu, VPN, sauvegarde, mises à jour)
 - Chef de projet pour Ibonia de 2020 à 2021
     - Développement, déploiement et maintenance d'un système host-to-host de validation des virements bancaires entre Airtel et Bank of Africa
-    - Evolution des paramétrages d'une application de géneration de code (Codesmith) pour les développeurs (PHP, XML)
+    - Évolution des paramétrages d'une application de génération de code (Codesmith) pour les développeurs (PHP, XML)
     - Lancement d'une plateforme d'optimisation des réservations de tables de restaurant (PHP, React, Neo4j + MySQL)
 - Responsable DevOps chez SDWorx Mauritius de novembre 2019 à août 2020
     - Animer des sessions pour établir et adopter les normes DevOps
-    - Maximiser l'automatisation partout où c'est possible (Ranorex, NewMan)
+    - Maximiser l'automatisation partout où c'est possible (Ranorex, Newman)
     - Migrer des Classic Azure Pipelines vers YAML Azure Pipelines
-    - Développer en C# / .Net Core
-    - Participer à faire de l'entreprise un "Great place to work" (GPTW 2020)
+    - Développer en C# / .NET Core
+    - Participer à faire de l'entreprise un "Great Place to Work" (GPTW 2020)
 - Consultant IT indépendant orienté informatique d'entreprise de février 2019 à novembre 2019
-    - Orange Madagascar (Acteur majeur des télécommunications): Chef de projet sur la refonte des applications B2B (Java, Angular, Atlassian forge et CI/CD)
-    - Arawak (Usine textile): Coach pour l'équipe IT (configuration de Jira, reporting)
-    - ATS (Externalisation des processus métiers): Chef de projet sur un outil de gestion de la performance pour environ 1000 collaborateurs (React, Symfony, Jenkins CI/CD)
-    - DevFest Madagascar : Orateur lors des sessions DevFest de 2019 à 2022 organisées par le groupe des développeurs Google à Madagascar
-- Responsable académique de l'ESTI (Ecole supérieure d'informatique) de novembre 2016 à février 2019
-    - Gérer des enseignants en technologies de l'information de niveau doctorat (validation des programmes)
-    - Diriger l'enseignement pour atteindre le niveau requis
+    - Orange Madagascar (acteur majeur des télécommunications) : Chef de projet sur la refonte des applications B2B (Java, Angular, Atlassian Forge et CI/CD)
+    - Arawak (usine textile) : Coach pour l'équipe IT (configuration de Jira, reporting)
+    - ATS (externalisation des processus métiers) : Chef de projet sur un outil de gestion de la performance pour environ 1000 collaborateurs (React, Symfony, Jenkins CI/CD)
+    - DevFest Madagascar : Orateur lors des sessions DevFest de 2019 à 2022 organisées par le Google Developers Group à Madagascar
+- Responsable académique de l'ESTI (École supérieure d'informatique) de novembre 2016 à février 2019
+    - Gérer des enseignants en technologies de l'information et en informatique de niveau doctorat (validation des programmes)
+    - Diriger l'enseignement pour atteindre le niveau requis par l'industrie informatique
     - Gérer les relations avec les entreprises
     - Coordonner le système d'information pour refléter la philosophie de l'institut
 - Ingénieur DevOps senior chez Netapsys de janvier 2014 à novembre 2016
     - Industrialisation de l'administration système
         - Gestion de configuration CFEngine
         - Surveillance avec Collectd, Graphite, Sensu
-    - Mise en place de registry Docker & images (Artifactory et Docker Distribution)
-        - Conteneurs d'outils pour dévloppeurs PHP et Java
-        - Packaging CentOS & Debian
-    - Mise en place d'architecture serveur à haute disponibilité
+    - Mise en place de registres Docker et création d'images (Artifactory et Docker Distribution)
+        - Conteneurs d'outils pour développeurs PHP et Java
+        - Packaging CentOS et Debian
+    - Mise en place d'architectures serveurs à haute disponibilité
         - Nginx et PHP-FPM (Magento, Drupal)
         - Cluster SQL Percona
-    - Support pour environ 400 ingénieurs Java & PHP
-        - Configuration, administration et mise en place de Atlassian Jira & Confluence
+    - Support pour environ 400 ingénieurs Java et PHP
+        - Configuration, administration et mise en place d'Atlassian Jira et Confluence
         - Configuration, administration et mise en place de VMware ESX et vCenter
 - Responsable Formation, Recrutement et Développement chez Ideo Neov d'août 2011 à décembre 2013
     - Membre du comité technique
@@ -95,14 +95,14 @@
         - Conseiller en infrastructure Linux
     - FORMATION : Conduire et superviser les programmes de formation et de développement pour plus de 60 employés concernant :
         - Gestion du code source (Hg, Git, SVN)
-        - Programmation orientée objet (PHP, Javascript)
+        - Programmation orientée objet (PHP, JavaScript)
         - Méthodes agiles (Scrum)
-        - Test Driven Development
+        - Test-Driven Development
         - Design Patterns
     - RECRUTEMENT
         - Recrutement d'ingénieurs de haut niveau et de mathématiciens
         - Formation des nouveaux venus aux outils, méthodes de travail et pratiques internes
-        - Évaluation : mesures, décision.
+        - Évaluation : interprétation et prise de décision
 - Enseignant à l'Université d'Antananarivo de novembre 2012 à juin 2013
     - Enseignement des bases de données appliquées à MySQL aux étudiants en Master.
         - Introduction aux bases de données
@@ -111,32 +111,33 @@
 - Responsable chez Blueline Business Service de novembre 2010 à août 2011
     - Support client pour le top 50 des entreprises utilisatrices d'Internet chez le fournisseur Blueline
     - Mentor technique de l'équipe d'ingénieurs IT
-    - Administration de réseaux à grande échelle.
+    - Administration de réseaux à grande échelle
     - Gestion commerciale et financière
         - Identification des profits et des priorités
         - Évolution des produits
         - Soin de la clientèle
-    - Transfert de compétences aux membres de l'équipe en croissance.
-- Architecte IT chez Gulfsat Madagascar (Acteur majeur des télécommunications) de juin 2009 à novembre 2010 
+    - Transfert de compétences aux membres de l'équipe en croissance
+- Architecte IT chez Gulfsat Madagascar (acteur majeur des télécommunications) de juin 2009 à novembre 2010
     - Administrateur système et architecte UNIX :
         - Virtualisation : KVM, LXC et OpenVZ
         - Stockage : NFS, RAID, LVM
         - Serveur de messagerie : Postfix, Exim, Courier POP/IMAP
-        - Accounting FreeRADIUS
-        - Base de données : PostGreSQL, MySQL
+        - Comptabilité FreeRADIUS
+        - Bases de données : PostgreSQL, MySQL
         - Annuaire : OpenLDAP
-- Chef de projet chez Vectoris d'août 2008 à mai 2009 
-    - Leader de l'équipe de développeurs.
-    - Production de sites web interactifs codés en
-        - Java, PHP, Python, Perl.
-        - Javascript via jQuery et Mootools
+- Chef de projet chez Vectoris d'août 2008 à mai 2009
+    - Leader de l'équipe de développeurs
+    - Production de sites web interactifs codés en :
+        - Java, PHP, Python, Perl
+        - JavaScript via jQuery et MooTools
     - Administrateur système pour des serveurs web dédiés Linux
 - Développeur chez Mixid de septembre 2007 à novembre 2007 (3 mois) :
-    - Interface directe PHP & Javascript avec les tables MySQL
+    - Interface directe PHP et JavaScript avec les tables MySQL
 - Administrateur système, administrateur de bases de données, développeur chez Medical Administrators International, de février 2007 à août 2007 :
-    - Optimisation des requêtes de base de données MySql
+    - Optimisation des requêtes de base de données MySQL
     - Maintenance du code PHP3
-    - Administration de serveur FreeBSD
+    - Administration de serveurs FreeBSD
 - Créateur de templates Joomla chez Edicom de 2007 à 2007 (moins d'un an).
 - Stagiaire chez Nuxeo de juillet 2003 à septembre 2003 (3 mois) :
     - Compréhension des mécanismes internes du CMS CPS écrit en Python sur Zope.
+

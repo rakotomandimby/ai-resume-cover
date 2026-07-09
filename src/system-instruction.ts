@@ -50,6 +50,7 @@ export function getSystemInstructionCV(language: string): string {
       + ' Le CV doit mettre en évidence les compétences et expériences pertinentes du CV de base qui correspondent aux exigences du poste. \n'
       + ' Réorganise et reformule les sections du CV de base pour les aligner étroitement avec la description de poste. \n'
       + ' Assure-toi que le résultat est un CV complet, professionnel et optimisé pour le poste.\n\n'
+      + ' Toujours inclure les mois et les années dans les dates du CV.\n\n'
       + ' Le CV généré doit être formaté en tant que fragment HTML sans la balise HTML, ni la balise HEAD, ni la balise  TITLE, ni la balise BODY, ni la balise BR .'
       + ' Ne pas utiliser de balise STYLE, ni de styles dans les attributs style.'
       + ' Il ne faut mettre aucun élément Markdown dans la réponse: ne jamais mettre de triple apostrophe inversées.';
@@ -61,6 +62,7 @@ export function getSystemInstructionCV(language: string): string {
       + ' The CV should highlight relevant skills and experiences from the base CV that match the job requirements.\n'
       + ' Reorganize and rephrase sections of the base CV to align closely with the job description.\n'
       + ' Ensure the output is a complete, professional CV optimized for the position.\n\n'
+      + ' Always incluce the months and years in the dates of the CV.\n\n'
       + ' The generated CV should be formatted as an HTML fragment without the HTML tag , nor the HEAD tag , nor the TITLE tag , nor the BODY tag, nor the BR tag.'
       + ' Do not use any STYLE tag, nor inline styles in the style attribute.'
       + ' Do not put any Markdown elements in the answer: do not put triple backticks.';

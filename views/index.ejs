@@ -164,86 +164,94 @@
 
       <form class="mt-4" action="/" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-        
+
         <div class="mb-3">
           <label for="token" class="form-label">Token</label>
-          <input type="text" class="form-control" id="token" placeholder="Enter token" name="token" >
+          <input type="text" class="form-control" id="token" placeholder="Enter token" name="token">
         </div>
-        <div class="mb-3">
-          <label for="company" class="form-label">Company name</label>
-          <input type="text" class="form-control" id="company" placeholder="Enter company name" name="company" >
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="searchCompany" name="searchCompany" value="true" checked>
-          <label class="form-check-label" for="searchCompany">Attempt to use specific information about the company (if name provided)</label>
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="enableSpecialInstructions" name="enableSpecialInstructions" value="true" checked>
-          <label class="form-check-label" for="enableSpecialInstructions">Add special instructions / custom guidance for the cover letter</label>
-        </div>
-        <div class="mb-3">
-          <label for="specialInstructions" class="form-label" id="specialInstructionsLabel">Special instructions</label>
-          <textarea id="specialInstructions" class="form-control" rows="3" name="specialInstructions" placeholder="E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc."></textarea>
-        </div>
+
+        <fieldset class="mb-3 border rounded p-3">
+          <legend class="float-none w-auto fs-6 fw-semibold px-2">Company</legend>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="searchCompany" name="searchCompany" value="true" checked>
+            <label class="form-check-label" for="searchCompany">Attempt to use specific information about the company</label>
+          </div>
+          <div class="mb-0">
+            <label for="company" class="form-label">Company name</label>
+            <input type="text" class="form-control" id="company" placeholder="Enter company name" name="company">
+          </div>
+        </fieldset>
+
         <div class="mb-3">
           <label for="position" class="form-label">Position</label>
           <input type="text" class="form-control" id="position" placeholder="Enter position" name="position">
         </div>
+
         <div class="mb-3">
           <label for="job" class="form-label">Job description (will be used for CV and Cover Letter)</label>
           <textarea id="job" class="form-control" rows="15" name="job" placeholder="Paste the full job description here..."></textarea>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Language</label>
-          <div class="border p-2 rounded">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="languageen" name="language" value="English" checked>
-              <label class="form-check-label" for="languageen">
-                <span class="fi fi-gb me-2"></span>English
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="languagefr" name="language" value="French">
-              <label class="form-check-label" for="languagefr">
-                <span class="fi fi-fr me-2"></span>French
-              </label>
-            </div>
+
+        <fieldset class="mb-3 border rounded p-3">
+          <legend class="float-none w-auto fs-6 fw-semibold px-2">Special Instructions (Cover Letter)</legend>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="enableSpecialInstructions" name="enableSpecialInstructions" value="true" checked>
+            <label class="form-check-label" for="enableSpecialInstructions">Add custom guidance for the cover letter</label>
           </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Number of words (for Cover Letter)</label>
-          <div class="border p-2 rounded">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="words" id="words100" value="100" checked>
-              <label class="form-check-label" for="words100">100</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="words" id="words200" value="200">
-              <label class="form-check-label" for="words200">200</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="words" id="words300" value="300">
-              <label class="form-check-label" for="words300">300</label>
-            </div>
+          <div class="mb-0">
+            <label for="specialInstructions" class="form-label visually-hidden" id="specialInstructionsLabel">Special instructions</label>
+            <textarea id="specialInstructions" class="form-control" rows="3" name="specialInstructions" placeholder="E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc."></textarea>
           </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">API Providers (Select exactly two)</label>
-          <div class="border p-2 rounded">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="providersCombination" id="comboOpenAIGemini" value="openai-gemini" <%= selectedCombination === 'openai-gemini' ? 'checked' : '' %>>
-              <label class="form-check-label" for="comboOpenAIGemini">OpenAI & Gemini</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="providersCombination" id="comboOpenAIAnthropic" value="openai-anthropic" <%= selectedCombination === 'openai-anthropic' ? 'checked' : '' %>>
-              <label class="form-check-label" for="comboOpenAIAnthropic">OpenAI & Anthropic</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="providersCombination" id="comboGeminiAnthropic" value="gemini-anthropic" <%= selectedCombination === 'gemini-anthropic' ? 'checked' : '' %>>
-              <label class="form-check-label" for="comboGeminiAnthropic">Gemini & Anthropic</label>
-            </div>
+        </fieldset>
+
+        <fieldset class="mb-3 border rounded p-3">
+          <legend class="float-none w-auto fs-6 fw-semibold px-2">Language</legend>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="languageen" name="language" value="English" checked>
+            <label class="form-check-label" for="languageen">
+              <span class="fi fi-gb me-2"></span>English
+            </label>
           </div>
-        </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="languagefr" name="language" value="French">
+            <label class="form-check-label" for="languagefr">
+              <span class="fi fi-fr me-2"></span>French
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mb-3 border rounded p-3">
+          <legend class="float-none w-auto fs-6 fw-semibold px-2">Number of Words (Cover Letter)</legend>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="words" id="words100" value="100" checked>
+            <label class="form-check-label" for="words100">100</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="words" id="words200" value="200">
+            <label class="form-check-label" for="words200">200</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="words" id="words300" value="300">
+            <label class="form-check-label" for="words300">300</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mb-3 border rounded p-3">
+          <legend class="float-none w-auto fs-6 fw-semibold px-2">API Providers</legend>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="providersCombination" id="comboOpenAIGemini" value="openai-gemini" <%= selectedCombination === 'openai-gemini' ? 'checked' : '' %>>
+            <label class="form-check-label" for="comboOpenAIGemini">OpenAI & Gemini</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="providersCombination" id="comboOpenAIAnthropic" value="openai-anthropic" <%= selectedCombination === 'openai-anthropic' ? 'checked' : '' %>>
+            <label class="form-check-label" for="comboOpenAIAnthropic">OpenAI & Anthropic</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="providersCombination" id="comboGeminiAnthropic" value="gemini-anthropic" <%= selectedCombination === 'gemini-anthropic' ? 'checked' : '' %>>
+            <label class="form-check-label" for="comboGeminiAnthropic">Gemini & Anthropic</label>
+          </div>
+        </fieldset>
+
         <button type="submit" class="btn btn-primary">Generate</button>
       </form>
     </div>
@@ -280,14 +288,12 @@
 
         function updateSpecialInstructionsState() {
           if (enableSpecialInstructionsCheckbox.checked) {
-            specialInstructionsTextarea.readOnly = false;
+            specialInstructionsTextarea.disabled = false;
             specialInstructionsTextarea.placeholder = "E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc.";
-            specialInstructionsLabel.textContent = "Special instructions";
           } else {
             specialInstructionsTextarea.value = '';
-            specialInstructionsTextarea.readOnly = true;
+            specialInstructionsTextarea.disabled = true;
             specialInstructionsTextarea.placeholder = "Special instructions are disabled";
-            specialInstructionsLabel.textContent = "Special instructions (disabled)";
           }
         }
 

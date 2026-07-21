@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",
-    "@google/genai": "^2.11.0",
+    "@google/genai": "^2.12.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/csurf": "^1.11.5",
     "@types/express": "^5.0.6",

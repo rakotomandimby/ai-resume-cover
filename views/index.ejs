@@ -193,14 +193,22 @@
         </div>
 
         <fieldset class="mb-3 border rounded p-3">
-          <legend class="float-none w-auto fs-6 fw-semibold px-2">Special Instructions (Cover Letter)</legend>
+          <legend class="float-none w-auto fs-6 fw-semibold px-2">Special Instructions</legend>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="enableSpecialInstructions" name="enableSpecialInstructions" value="true" checked>
-            <label class="form-check-label" for="enableSpecialInstructions">Add custom guidance for the cover letter</label>
+            <label class="form-check-label" for="enableSpecialInstructions">Add custom guidance (applied to both the cover letter and the CV by default)</label>
           </div>
-          <div class="mb-0">
-            <label for="specialInstructions" class="form-label visually-hidden" id="specialInstructionsLabel">Special instructions</label>
+          <div class="mb-3">
+            <label for="specialInstructions" class="form-label" id="specialInstructionsLabel">Special instructions (cover letter and CV)</label>
             <textarea id="specialInstructions" class="form-control" rows="3" name="specialInstructions" placeholder="E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc."></textarea>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="useSeparateCVInstructions" name="useSeparateCVInstructions" value="true">
+            <label class="form-check-label" for="useSeparateCVInstructions">Use separate instructions for the CV</label>
+          </div>
+          <div class="mb-0" id="cvSpecialInstructionsGroup">
+            <label for="cvSpecialInstructions" class="form-label" id="cvSpecialInstructionsLabel">Special instructions (CV only)</label>
+            <textarea id="cvSpecialInstructions" class="form-control" rows="3" name="cvSpecialInstructions" placeholder="E.g., prioritize technical stack keywords, reorder experience to match the role, etc."></textarea>
           </div>
         </fieldset>
 
@@ -284,10 +292,15 @@
 
         const enableSpecialInstructionsCheckbox = document.getElementById('enableSpecialInstructions');
         const specialInstructionsTextarea = document.getElementById('specialInstructions');
-        const specialInstructionsLabel = document.getElementById('specialInstructionsLabel');
+        const useSeparateCVInstructionsCheckbox = document.getElementById('useSeparateCVInstructions');
+        const cvSpecialInstructionsGroup = document.getElementById('cvSpecialInstructionsGroup');
+        const cvSpecialInstructionsTextarea = document.getElementById('cvSpecialInstructions');
 
         function updateSpecialInstructionsState() {
-          if (enableSpecialInstructionsCheckbox.checked) {
+          const enabled = enableSpecialInstructionsCheckbox.checked;
+
+          // Base (shared) special instructions
+          if (enabled) {
             specialInstructionsTextarea.disabled = false;
             specialInstructionsTextarea.placeholder = "E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc.";
           } else {
@@ -295,9 +308,29 @@
             specialInstructionsTextarea.disabled = true;
             specialInstructionsTextarea.placeholder = "Special instructions are disabled";
           }
+
+          // The "separate CV instructions" option only makes sense when instructions are enabled
+          useSeparateCVInstructionsCheckbox.disabled = !enabled;
+          if (!enabled) {
+            useSeparateCVInstructionsCheckbox.checked = false;
+          }
+
+          const useSeparate = enabled && useSeparateCVInstructionsCheckbox.checked;
+
+          // Dedicated CV special instructions
+          if (useSeparate) {
+            cvSpecialInstructionsGroup.style.display = '';
+            cvSpecialInstructionsTextarea.disabled = false;
+            cvSpecialInstructionsTextarea.placeholder = "E.g., prioritize technical stack keywords, reorder experience to match the role, etc.";
+          } else {
+            cvSpecialInstructionsGroup.style.display = 'none';
+            cvSpecialInstructionsTextarea.value = '';
+            cvSpecialInstructionsTextarea.disabled = true;
+          }
         }
 
         enableSpecialInstructionsCheckbox.addEventListener('change', updateSpecialInstructionsState);
+        useSeparateCVInstructionsCheckbox.addEventListener('change', updateSpecialInstructionsState);
         updateSpecialInstructionsState();
       });
     </script>

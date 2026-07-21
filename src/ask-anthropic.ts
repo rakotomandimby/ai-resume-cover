@@ -59,6 +59,8 @@ export async function getAnthropicCVResult(
   jobDescription: string,
   position: string,
   language: string,
+  enableSpecialInstructions: boolean = false,
+  specialInstructions: string = '',
   dryRun: boolean = false
 ): Promise<string> {
   if (dryRun) {
@@ -66,7 +68,14 @@ export async function getAnthropicCVResult(
   }
 
   const cv = getBaseCV(language);
-  const turns = getCVConversation(language, cv, jobDescription, position);
+  const turns = getCVConversation(
+    language,
+    cv,
+    jobDescription,
+    position,
+    enableSpecialInstructions,
+    specialInstructions
+  );
   const messages = turns.map(turn => ({
     role: turn.role,
     content: turn.content

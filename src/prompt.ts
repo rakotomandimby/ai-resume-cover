@@ -71,34 +71,58 @@ export function getCoverLetterConversation(
 // 3. user: provide the source professional history (from the markdown CV file)
 // 4. assistant: ask for the job description (hardcoded)
 // 5. user: provide the job description (from the web form input)
-// 6. assistant: ask what to do next (hardcoded)
-// 7. user: ask for the tailored CV based on the position and job description
+// 6. (optional) assistant: ask for special instructions (hardcoded)
+// 7. (optional) user: provide the special instructions (from the web form input)
+// 8. assistant: ask what to do next (hardcoded)
+// 9. user: ask for the tailored CV based on the position and job description
 export function getCVConversation(
   language: string,
   cv: string,
   job: string,
-  position: string
+  position: string,
+  enableSpecialInstructions?: boolean,
+  specialInstructions?: string
 ): ConversationTurn[] {
   if (language === 'French') {
-    return [
+    const turns: ConversationTurn[] = [
       { role: 'user', content: "Peux-tu m'aider à générer un CV personnalisé ?" },
       { role: 'assistant', content: "Bien sûr, veuillez fournir votre historique professionnel source." },
       { role: 'user', content: cv },
       { role: 'assistant', content: "Merci. Maintenant, veuillez fournir la description du poste." },
       { role: 'user', content: job },
+    ];
+
+    if (enableSpecialInstructions && specialInstructions && specialInstructions.trim() !== '') {
+      turns.push(
+        { role: 'assistant', content: "Y a-t-il des instructions particulières ou des directives que je devrais suivre lors de la génération du CV ?" },
+        { role: 'user', content: specialInstructions.trim() }
+      );
+    }
+    turns.push(
       { role: 'assistant', content: "C'est noté. Que voulez-vous que je fasse ensuite ?" },
       { role: 'user', content: `En te basant sur la description de poste fournie pour le rôle de "${position}", génère un CV personnalisé en français.` }
-    ];
+    );
+    return turns;
   } else {
-    return [
+    const turns: ConversationTurn[] = [
       { role: 'user', content: "Can you help me generate a tailored CV?" },
       { role: 'assistant', content: "Sure, please provide your source professional history." },
       { role: 'user', content: cv },
       { role: 'assistant', content: "Thank you. Now please provide the job description." },
       { role: 'user', content: job },
+    ];
+
+    if (enableSpecialInstructions && specialInstructions && specialInstructions.trim() !== '') {
+      turns.push(
+        { role: 'assistant', content: "Are there any specific instructions or guidelines I should follow while generating the CV?" },
+        { role: 'user', content: specialInstructions.trim() }
+      );
+    }
+    turns.push(
       { role: 'assistant', content: "Got it. What would you like me to do next?" },
       { role: 'user', content: `Based on the provided job description for the "${position}" role, generate a tailored CV in english.` }
-    ];
+    );
+    return turns;
   }
 }
 

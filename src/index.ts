@@ -126,6 +126,14 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
   const searchCompanyInfo = req.body.searchCompany === 'true';
   const enableSpecialInstructions = req.body.enableSpecialInstructions === 'true';
   const specialInstructions = req.body.specialInstructions || '';
+  const useSeparateCVInstructions = req.body.useSeparateCVInstructions === 'true';
+  const cvSpecialInstructions = req.body.cvSpecialInstructions || '';
+
+  // By default, the cover letter special instructions are shared with the CV.
+  // When the user opts in to separate CV instructions, use the dedicated CV field instead.
+  const enableCVSpecialInstructions = enableSpecialInstructions;
+  const effectiveCVSpecialInstructions =
+    enableSpecialInstructions && useSeparateCVInstructions ? cvSpecialInstructions : specialInstructions;
 
   const validCombinations = ['openai-gemini', 'openai-anthropic', 'gemini-anthropic'];
   const selectedCombination = validCombinations.includes(providersCombination) ? providersCombination : 'openai-gemini';
@@ -180,15 +188,36 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
   const runAnthropic = selectedCombination === 'openai-anthropic' || selectedCombination === 'gemini-anthropic';
 
   const geminiCVPromise = runGemini
-    ? getGeminiCVResult(job, position, language, dryRun)
+    ? getGeminiCVResult(
+        job,
+        position,
+        language,
+        enableCVSpecialInstructions,
+        effectiveCVSpecialInstructions,
+        dryRun
+      )
     : Promise.resolve('Not selected');
 
   const openAICVPromise = runOpenAI
-    ? getOpenAICVResult(job, position, language, dryRun)
+    ? getOpenAICVResult(
+        job,
+        position,
+        language,
+        enableCVSpecialInstructions,
+        effectiveCVSpecialInstructions,
+        dryRun
+      )
     : Promise.resolve('Not selected');
 
   const anthropicCVPromise = runAnthropic
-    ? getAnthropicCVResult(job, position, language, dryRun)
+    ? getAnthropicCVResult(
+        job,
+        position,
+        language,
+        enableCVSpecialInstructions,
+        effectiveCVSpecialInstructions,
+        dryRun
+      )
     : Promise.resolve('Not selected');
 
   const geminiCoverLetterPromise = runGemini

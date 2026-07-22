@@ -1,13 +1,13 @@
 # About the candidate
 
-- **Name**: Mihamina RAKOTOMANDIMBY
-- **Email**: mihamina@rktmb.org
-- **Phone**: +261 32 99 236 88 (WhatsApp also)
-- **Location**: Antananarivo, Madagascar
-- **LinkedIn**: https://www.linkedin.com/in/mihaminarakotomandimby/
-- **GitHub**: https://github.com/rakotomandimby
-- **Availability**: within 2 weeks
-- **Languages**: French (native), English (professional)
+- Name: Mihamina RAKOTOMANDIMBY
+- Email: mihamina@rktmb.org
+- Phone: +261 32 99 236 88 (WhatsApp also)
+- Location: Antananarivo, Madagascar
+- LinkedIn: https://www.linkedin.com/in/mihaminarakotomandimby/
+- GitHub: https://github.com/rakotomandimby
+- Availability: within 2 weeks
+- Languages: French (native), English (professional)
 
 # Key skills
 

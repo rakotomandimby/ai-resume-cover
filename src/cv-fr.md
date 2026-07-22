@@ -1,13 +1,13 @@
 # A propos du candidat
 
-- **Nom**: Mihamina RAKOTOMANDIMBY
-- **Email**: mihamina@rktmb.org
-- **Téléphone**: +261 32 99 236 88 (WhatsApp aussi)
-- **Localisation**: Antananarivo, Madagascar
-- **LinkedIn**: https://www.linkedin.com/in/mihaminarakotomandimby/
-- **GitHub**: https://github.com/rakotomandimby
-- **Disponibilité**: sous 2 semaines
-- **Langues**: Français (natif), Anglais (professionnel)
+- Nom: Mihamina RAKOTOMANDIMBY
+- Email: mihamina@rktmb.org
+- Téléphone: +261 32 99 236 88 (WhatsApp aussi)
+- Localisation: Antananarivo, Madagascar
+- LinkedIn: https://www.linkedin.com/in/mihaminarakotomandimby/
+- GitHub: https://github.com/rakotomandimby
+- Disponibilité: sous 2 semaines
+- Langues: Français (natif), Anglais (professionnel)
 
 # Compétences clés
 
@@ -140,4 +140,3 @@
 - Créateur de templates Joomla chez Edicom de 2007 à 2007 (moins d'un an).
 - Stagiaire chez Nuxeo de juillet 2003 à septembre 2003 (3 mois) :
     - Compréhension des mécanismes internes du CMS CPS écrit en Python sur Zope.
-

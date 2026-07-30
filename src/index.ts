@@ -3,9 +3,9 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
-import { getOpenAICoverLetterResult, getOpenAICVResult } from './ask-openai';
-import { getGeminiCoverLetterResult, getGeminiCVResult } from './ask-gemini';
-import { getAnthropicCoverLetterResult, getAnthropicCVResult } from './ask-anthropic';
+import { getOpenAICoverLetterResult, getOpenAICVResult, OPENAI_MODEL } from './ask-openai';
+import { getGeminiCoverLetterResult, getGeminiCVResult, GEMINI_MODEL } from './ask-gemini';
+import { getAnthropicCoverLetterResult, getAnthropicCVResult, ANTHROPIC_MODEL } from './ask-anthropic';
 import { getAuthToken } from './utils';
 
 type GenerationStatus = 'idle' | 'success' | 'error';
@@ -335,6 +335,10 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
+  console.log('Configured Models:');
+  console.log(`- OpenAI: ${OPENAI_MODEL}`);
+  console.log(`- Gemini: ${GEMINI_MODEL}`);
+  console.log(`- Anthropic: ${ANTHROPIC_MODEL}`);
   if (envErrors.length > 0) {
     console.warn('--- Configuration Issues Detected ---');
     envErrors.forEach((err) => console.warn(`- ${err}`));

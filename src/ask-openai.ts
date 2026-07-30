@@ -3,7 +3,7 @@ import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } from './system-instruction';
 import { nl2br, nullToEmptyString, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'gpt-5.5';  
+export const OPENAI_MODEL = 'gpt-5.6-terra';  
 
 export async function getOpenAICoverLetterResult(
   company: string,
@@ -44,7 +44,7 @@ export async function getOpenAICoverLetterResult(
   const openai = new OpenAI({ apiKey: getAPIKey("openai") });
   const chatCompletion = await openai.chat.completions.create({
     messages: messages,
-    model: model_to_use
+    model: OPENAI_MODEL
   });  
   
   const content = chatCompletion.choices?.[0]?.message?.content ?? null;
@@ -83,7 +83,7 @@ export async function getOpenAICVResult(
   const openai = new OpenAI({ apiKey: getAPIKey("openai") });
   const chatCompletion = await openai.chat.completions.create({
     messages: messages,
-    model: model_to_use
+    model: OPENAI_MODEL
   });
   
   const content = chatCompletion.choices?.[0]?.message?.content ?? null;

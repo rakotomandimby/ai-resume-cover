@@ -3,7 +3,7 @@ import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } fr
 import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { nl2br, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'claude-opus-4-8';
+export const ANTHROPIC_MODEL = 'claude-opus-5';
 
 export async function getAnthropicCoverLetterResult(
   company: string,
@@ -40,7 +40,7 @@ export async function getAnthropicCoverLetterResult(
 
   const client = new Anthropic({ apiKey: getAPIKey("anthropic") });
   const message = await client.messages.create({
-    model: model_to_use,
+    model: ANTHROPIC_MODEL,
     max_tokens: 4096,
     system: getSystemInstructionCoverLetter(company, language, searchCompanyInfo),
     messages: messages
@@ -83,7 +83,7 @@ export async function getAnthropicCVResult(
 
   const client = new Anthropic({ apiKey: getAPIKey("anthropic") });
   const message = await client.messages.create({
-    model: model_to_use,
+    model: ANTHROPIC_MODEL,
     max_tokens: 4096,
     system: getSystemInstructionCV(language),
     messages: messages

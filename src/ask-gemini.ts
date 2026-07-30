@@ -3,7 +3,7 @@ import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } fr
 import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { nl2br, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-const model_to_use = 'gemini-3.1-pro-preview';
+export const GEMINI_MODEL = 'gemini-3.1-pro-preview';
 
 export async function getGeminiCoverLetterResult(
   company: string,
@@ -39,7 +39,7 @@ export async function getGeminiCoverLetterResult(
 
   const client = new GoogleGenAI({ apiKey: getAPIKey("gemini") });
   const interaction = await client.interactions.create({
-    model: model_to_use,
+    model: GEMINI_MODEL,
     system_instruction: getSystemInstructionCoverLetter(company, language, searchCompanyInfo),
     input: prompt
   });
@@ -76,7 +76,7 @@ export async function getGeminiCVResult(
 
   const client = new GoogleGenAI({ apiKey: getAPIKey("gemini") });
   const interaction = await client.interactions.create({
-    model: model_to_use,
+    model: GEMINI_MODEL,
     system_instruction: getSystemInstructionCV(language),
     input: prompt
   });

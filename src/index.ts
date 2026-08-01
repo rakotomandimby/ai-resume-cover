@@ -337,7 +337,7 @@ app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
   console.log('Configured Models:');
   console.log(`- OpenAI: ${OPENAI_MODEL}`);
-  console.log(`- GoogleAI (Gemini): ${GOOGLEAI_MODEL}`);
+  console.log(`- GoogleAI: ${GOOGLEAI_MODEL}`);
   console.log(`- Anthropic: ${ANTHROPIC_MODEL}`);
   if (envErrors.length > 0) {
     console.warn('--- Configuration Issues Detected ---');

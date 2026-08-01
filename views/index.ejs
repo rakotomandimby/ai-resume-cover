@@ -101,7 +101,7 @@
               GoogleAI CV Result
             </div>
             <div class="card-body" id="googleAICVResult">
-              <% if (results.gooleAICV.status === 'error') { %>
+              <% if (results.googleAICV.status === 'error') { %>
                 <div class="alert alert-danger mb-0"><%= results.googleAICV.content %></div>
               <% } else if (results.googleAICV.status === 'idle') { %>
                 <p class="text-muted mb-0"><%= results.googleAICV.content %></p>

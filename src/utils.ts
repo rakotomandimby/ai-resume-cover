@@ -7,16 +7,16 @@ export function nl2br(str: string): string {
   return str.replace(/(?:\r\n|\r|\n)/g, '<br>');
 }
 
-export function getAPIKey(modelName:string): string {
-  if (modelName === "openai") {
+export function getAPIKey(providerName: string): string {
+  if (providerName === "openai") {
     if (process.env["OPENAI_API_KEY"] === undefined) {return "";}
     else {return process.env["OPENAI_API_KEY"];}
   }
-  else if (modelName === "gemini") {
+  else if (providerName === "googleai") {
     if (process.env["GOOGLEAI_API_KEY"] === undefined) {return "";}
     else {return process.env["GOOGLEAI_API_KEY"];}
   }
-  else if (modelName === "anthropic") {
+  else if (providerName === "anthropic") {
     if (process.env["ANTHROPIC_API_KEY"] === undefined) {return "";}
     else {return process.env["ANTHROPIC_API_KEY"];}
   }

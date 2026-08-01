@@ -4,7 +4,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
 import { getOpenAICoverLetterResult, getOpenAICVResult, OPENAI_MODEL } from './ask-openai';
-import { getGeminiCoverLetterResult, getGeminiCVResult, GEMINI_MODEL } from './ask-gemini';
+import { getGoogleAICoverLetterResult, getGoogleAICVResult, GOOGLEAI_MODEL } from './ask-googleai';
 import { getAnthropicCoverLetterResult, getAnthropicCVResult, ANTHROPIC_MODEL } from './ask-anthropic';
 import { getAuthToken } from './utils';
 
@@ -16,16 +16,16 @@ interface GenerationResult {
 }
 
 interface TemplateResults {
-  geminiCV: GenerationResult;
+  googleAICV: GenerationResult;
   openAICV: GenerationResult;
   anthropicCV: GenerationResult;
-  geminiCoverLetter: GenerationResult;
+  googleAICoverLetter: GenerationResult;
   openAICoverLetter: GenerationResult;
   anthropicCoverLetter: GenerationResult;
 }
 
 const createInitialResults = (): TemplateResults => ({
-  geminiCV: {
+  googleAICV: {
     status: 'idle',
     content: 'Waiting for your job description for CV generation',
   },
@@ -37,7 +37,7 @@ const createInitialResults = (): TemplateResults => ({
     status: 'idle',
     content: 'Waiting for your job description for CV generation',
   },
-  geminiCoverLetter: {
+  googleAICoverLetter: {
     status: 'idle',
     content: 'Waiting for your question for Cover Letter',
   },
@@ -52,10 +52,10 @@ const createInitialResults = (): TemplateResults => ({
 });
 
 const createUniformResults = (status: GenerationStatus, content: string): TemplateResults => ({
-  geminiCV: { status, content },
+  googleAICV: { status, content },
   openAICV: { status, content },
   anthropicCV: { status, content },
-  geminiCoverLetter: { status, content },
+  googleAICoverLetter: { status, content },
   openAICoverLetter: { status, content },
   anthropicCoverLetter: { status, content },
 });
@@ -88,7 +88,7 @@ if (!process.env.OPENAI_API_KEY) {
   envErrors.push('OPENAI_API_KEY is not set. OpenAI features may not work.');
 }
 if (!process.env.GOOGLEAI_API_KEY) {
-  envErrors.push('GOOGLEAI_API_KEY is not set. Google AI features may not work.');
+  envErrors.push('GOOGLEAI_API_KEY is not set. GoogleAI features may not work.');
 }
 if (!process.env.ANTHROPIC_API_KEY) {
   envErrors.push('ANTHROPIC_API_KEY is not set. Anthropic features may not work.');
@@ -114,7 +114,7 @@ app.get('/', csrfProtection, (req: Request, res: Response) => {
     results: createInitialResults(),
     csrfToken: (req as any).csrfToken(),
     formError: null,
-    selectedCombination: 'openai-gemini',
+    selectedCombination: 'openai-googleai',
     isInitialLoad: true,
   });
 });
@@ -135,8 +135,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
   const effectiveCVSpecialInstructions =
     enableSpecialInstructions && useSeparateCVInstructions ? cvSpecialInstructions : specialInstructions;
 
-  const validCombinations = ['openai-gemini', 'openai-anthropic', 'gemini-anthropic'];
-  const selectedCombination = validCombinations.includes(providersCombination) ? providersCombination : 'openai-gemini';
+  const validCombinations = ['openai-googleai', 'openai-anthropic', 'googleai-anthropic'];
+  const selectedCombination = validCombinations.includes(providersCombination) ? providersCombination : 'openai-googleai';
 
   const baseRenderOptionsForPost = {
     envErrors,
@@ -183,12 +183,12 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
 
   const dryRun = false;
 
-  const runGemini = selectedCombination === 'openai-gemini' || selectedCombination === 'gemini-anthropic';
-  const runOpenAI = selectedCombination === 'openai-gemini' || selectedCombination === 'openai-anthropic';
-  const runAnthropic = selectedCombination === 'openai-anthropic' || selectedCombination === 'gemini-anthropic';
+  const runGoogleAI = selectedCombination === 'openai-googleai' || selectedCombination === 'googleai-anthropic';
+  const runOpenAI = selectedCombination === 'openai-googleai' || selectedCombination === 'openai-anthropic';
+  const runAnthropic = selectedCombination === 'openai-anthropic' || selectedCombination === 'googleai-anthropic';
 
-  const geminiCVPromise = runGemini
-    ? getGeminiCVResult(
+  const googleAICVPromise = runGoogleAI
+    ? getGoogleAICVResult(
         job,
         position,
         language,
@@ -220,8 +220,8 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
       )
     : Promise.resolve('Not selected');
 
-  const geminiCoverLetterPromise = runGemini
-    ? getGeminiCoverLetterResult(
+  const googleAICoverLetterPromise = runGoogleAI
+    ? getGoogleAICoverLetterResult(
         companyForProcessing,
         position,
         job,
@@ -263,25 +263,25 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
     : Promise.resolve('Not selected');
 
   const [
-    geminiCVResponse,
+    googleAICVResponse,
     openAICVResponse,
     anthropicCVResponse,
-    geminiCoverLetterResponse,
+    googleAICoverLetterResponse,
     openAICoverLetterResponse,
     anthropicCoverLetterResponse,
   ] = await Promise.allSettled([
-    geminiCVPromise,
+    googleAICVPromise,
     openAICVPromise,
     anthropicCVPromise,
-    geminiCoverLetterPromise,
+    googleAICoverLetterPromise,
     openAICoverLetterPromise,
     anthropicCoverLetterPromise,
   ]);
 
   const finalResults: TemplateResults = {
-    geminiCV: mapSettledResult(geminiCVResponse, {
-      logContext: 'Error with Gemini CV generation',
-      userMessagePrefix: 'Error generating CV with Gemini',
+    googleAICV: mapSettledResult(googleAICVResponse, {
+      logContext: 'Error with GoogleAI CV generation',
+      userMessagePrefix: 'Error generating CV with GoogleAI',
     }),
     openAICV: mapSettledResult(openAICVResponse, {
       logContext: 'Error with OpenAI CV generation',
@@ -291,9 +291,9 @@ app.post('/', csrfProtection, async (req: Request, res: Response) => {
       logContext: 'Error with Anthropic CV generation',
       userMessagePrefix: 'Error generating CV with Anthropic',
     }),
-    geminiCoverLetter: mapSettledResult(geminiCoverLetterResponse, {
-      logContext: 'Error with Gemini Cover Letter generation',
-      userMessagePrefix: 'Error generating Cover Letter with Gemini',
+    googleAICoverLetter: mapSettledResult(googleAICoverLetterResponse, {
+      logContext: 'Error with GoogleAI Cover Letter generation',
+      userMessagePrefix: 'Error generating Cover Letter with GoogleAI',
     }),
     openAICoverLetter: mapSettledResult(openAICoverLetterResponse, {
       logContext: 'Error with OpenAI Cover Letter generation',
@@ -325,7 +325,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
       csrfToken: (req as any).csrfToken ? (req as any).csrfToken() : '',
       formError:
         'Invalid form submission token. Please refresh the page and try again. Ensure cookies are enabled in your browser.',
-      selectedCombination: 'openai-gemini',
+      selectedCombination: 'openai-googleai',
       isInitialLoad: true,
     });
   } else {
@@ -337,7 +337,7 @@ app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
   console.log('Configured Models:');
   console.log(`- OpenAI: ${OPENAI_MODEL}`);
-  console.log(`- Gemini: ${GEMINI_MODEL}`);
+  console.log(`- GoogleAI (Gemini): ${GOOGLEAI_MODEL}`);
   console.log(`- Anthropic: ${ANTHROPIC_MODEL}`);
   if (envErrors.length > 0) {
     console.warn('--- Configuration Issues Detected ---');

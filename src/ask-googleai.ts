@@ -3,9 +3,9 @@ import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } fr
 import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { nl2br, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-export const GEMINI_MODEL = 'gemini-3.1-pro-preview';
+export const GOOGLEAI_MODEL = 'gemini-3.1-pro-preview';
 
-export async function getGeminiCoverLetterResult(
+export async function getGoogleAICoverLetterResult(
   company: string,
   position: string,
   job: string,
@@ -18,7 +18,7 @@ export async function getGeminiCoverLetterResult(
 ): Promise<string> {
   if (dryRun) {
     getSystemInstructionCoverLetter(company, language, searchCompanyInfo);
-    return nl2br("Mock Gemini cover letter response (dry run).");
+    return nl2br("Mock GoogleAI cover letter response (dry run).");
   }
 
   const cv = getBaseCV(language);
@@ -34,12 +34,12 @@ export async function getGeminiCoverLetterResult(
     specialInstructions
   );
   
-  // Map the multi-step conversation turns into a structured prompt string for Gemini
+  // Map the multi-step conversation turns into a structured prompt string for GoogleAI (Gemini model)
   const prompt = turns.map(turn => `${turn.role === 'user' ? 'User' : 'Assistant'}: ${turn.content}`).join('\n\n');
 
-  const client = new GoogleGenAI({ apiKey: getAPIKey("gemini") });
+  const client = new GoogleGenAI({ apiKey: getAPIKey("googleai") });
   const interaction = await client.interactions.create({
-    model: GEMINI_MODEL,
+    model: GOOGLEAI_MODEL,
     system_instruction: getSystemInstructionCoverLetter(company, language, searchCompanyInfo),
     input: prompt
   });
@@ -49,7 +49,7 @@ export async function getGeminiCoverLetterResult(
   return nl2br(text);
 }
 
-export async function getGeminiCVResult(
+export async function getGoogleAICVResult(
   jobDescription: string,
   position: string,
   language: string,
@@ -58,7 +58,7 @@ export async function getGeminiCVResult(
   dryRun: boolean = false
 ): Promise<string> {
   if (dryRun) {
-    return "<p>Mock Gemini CV response (dry run).</p>";
+    return "<p>Mock GoogleAI CV response (dry run).</p>";
   }
 
   const cv = getBaseCV(language);
@@ -71,12 +71,12 @@ export async function getGeminiCVResult(
     specialInstructions
   );
 
-  // Map the multi-step conversation turns into a structured prompt string for Gemini
+  // Map the multi-step conversation turns into a structured prompt string for GoogleAI (Gemini model)
   const prompt = turns.map(turn => `${turn.role === 'user' ? 'User' : 'Assistant'}: ${turn.content}`).join('\n\n');
 
-  const client = new GoogleGenAI({ apiKey: getAPIKey("gemini") });
+  const client = new GoogleGenAI({ apiKey: getAPIKey("googleai") });
   const interaction = await client.interactions.create({
-    model: GEMINI_MODEL,
+    model: GOOGLEAI_MODEL,
     system_instruction: getSystemInstructionCV(language),
     input: prompt
   });

@@ -84,7 +84,7 @@ export async function getAnthropicCVResult(
   const client = new Anthropic({ apiKey: getAPIKey("anthropic") });
   const message = await client.messages.create({
     model: ANTHROPIC_MODEL,
-    max_tokens: 4096,
+    max_tokens: 16384,
     system: getSystemInstructionCV(language),
     messages: messages
   });

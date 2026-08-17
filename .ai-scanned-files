@@ -1,3 +1,4 @@
 #+./views/*
 +./src/*
 -./src/*.md
++./package.json

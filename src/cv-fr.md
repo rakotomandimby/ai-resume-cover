@@ -6,7 +6,7 @@
 - Localisation: Antananarivo, Madagascar
 - LinkedIn: https://www.linkedin.com/in/mihaminarakotomandimby/
 - GitHub: https://github.com/rakotomandimby
-- Disponibilité: sous 2 semaines
+- Disponibilité: rapide 
 - Langues: Français (natif), Anglais (professionnel)
 
 # Compétences clés
@@ -37,7 +37,7 @@
     - Architecte d'infrastructure Voix sur IP (VoIP)
     - Développement de fonctionnalités Asterisk AGI et AMI pour le cœur de réseau IP PBX, en utilisant les langages PHP et TypeScript
     - Architecte d'infrastructure Linux sur serveurs physiques et plateformes cloud (VMware)
-- Auteur du plugin Neovim "code-ai.nvim" (https://github.com/rakotomandimby/code-ai.nvim)
+- Auteur du plugin Neovim "code-ai.nvim" (https://github.com/code-ai-nvim/code-ai.nvim)
     - Plugin Neovim pour utiliser des modèles d'IA dans l'éditeur Neovim.
     - Supporte les modèles d'IA OpenAI, Google Gemini et Anthropic.
     - Gestion avancée du contexte pour obtenir des réponses pertinentes des modèles d'IA.

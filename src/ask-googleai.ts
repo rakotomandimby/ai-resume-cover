@@ -1,9 +1,20 @@
 import { GoogleGenAI } from '@google/genai';
 import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } from './system-instruction';
 import { getCoverLetterConversation, getCVConversation } from './prompt';
-import { nl2br, getAPIKey, removeMarkdownCodeBlocks } from './utils';
+import { nl2br, removeMarkdownCodeBlocks } from './utils';
 
 export const GOOGLEAI_MODEL = 'gemini-3.1-pro-preview';
+
+function getVertexAIClient(): GoogleGenAI {
+  const project = process.env.GOOGLE_CLOUD_PROJECT;
+  const location = process.env.GOOGLE_CLOUD_LOCATION || 'global';
+
+  return new GoogleGenAI({
+    vertexai: true,
+    project,
+    location,
+  });
+}
 
 export async function getGoogleAICoverLetterResult(
   company: string,
@@ -39,16 +50,16 @@ export async function getGoogleAICoverLetterResult(
     parts: [{ text: turn.content }],
   }));
 
-  const ai = new GoogleGenAI({ apiKey: getAPIKey('googleai') });
-  const response = await ai.models.generateContent({
+  const client = getVertexAIClient();
+  const response = await client.models.generateContent({
     model: GOOGLEAI_MODEL,
-    contents: contents,
+    contents,
     config: {
       systemInstruction: getSystemInstructionCoverLetter(company, language, searchCompanyInfo),
     },
   });
 
-  const text = response.text || '';
+  const text = response.text ?? '';
   return nl2br(text);
 }
 
@@ -79,16 +90,15 @@ export async function getGoogleAICVResult(
     parts: [{ text: turn.content }],
   }));
 
-  const ai = new GoogleGenAI({ apiKey: getAPIKey('googleai') });
-  const response = await ai.models.generateContent({
+  const client = getVertexAIClient();
+  const response = await client.models.generateContent({
     model: GOOGLEAI_MODEL,
-    contents: contents,
+    contents,
     config: {
       systemInstruction: getSystemInstructionCV(language),
     },
   });
 
-  const text = response.text || '';
+  const text = response.text ?? '';
   return removeMarkdownCodeBlocks(text);
 }
-

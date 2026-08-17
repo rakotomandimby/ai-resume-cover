@@ -87,8 +87,8 @@ const envErrors: string[] = [];
 if (!process.env.OPENAI_API_KEY) {
   envErrors.push('OPENAI_API_KEY is not set. OpenAI features may not work.');
 }
-if (!process.env.GOOGLEAI_API_KEY) {
-  envErrors.push('GOOGLEAI_API_KEY is not set. GoogleAI features may not work.');
+if (!process.env.GOOGLE_CLOUD_PROJECT) {
+  envErrors.push('GOOGLE_CLOUD_PROJECT is not set. Google Vertex AI features may not work.');
 }
 if (!process.env.ANTHROPIC_API_KEY) {
   envErrors.push('ANTHROPIC_API_KEY is not set. Anthropic features may not work.');

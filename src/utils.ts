@@ -23,7 +23,6 @@ export function getAPIKey(providerName: string): string {
   else {return "";}
 }
 
-// Modified getAuthToken to return null if not set or empty
 export function getAuthToken(): string | null {
   const token = process.env["AUTH_TOKEN"];
   if (token === undefined || token === "") {
@@ -34,9 +33,6 @@ export function getAuthToken(): string | null {
   return token;
 }
 
-// write a function that removes Markdown code blocks from a string
-// - remove the triple backticks and language name for beginning code block
-// - remove the triple backticks for ending code block
 
 export function removeMarkdownCodeBlocks(text: string): string {
   // Remove the opening code block with language name

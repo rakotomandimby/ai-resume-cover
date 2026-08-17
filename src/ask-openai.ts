@@ -89,4 +89,3 @@ export async function getOpenAICVResult(
   const content = chatCompletion.choices?.[0]?.message?.content ?? null;
   return removeMarkdownCodeBlocks(nullToEmptyString(content));
 }
-

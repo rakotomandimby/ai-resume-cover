@@ -37,7 +37,7 @@ At startup, the server reads configuration from environment variables:
 - `PORT`: optional HTTP port. If absent, the server listens on `3000`.
 - `OPENAI_API_KEY`: API key used by the OpenAI SDK.
 - `ANTHROPIC_API_KEY`: API key used by the Anthropic SDK.
-- `GOOGLEAI_API_KEY`: Google AI API key expected by the broader application configuration and exposed by `getAPIKey("googleai")` in `src/utils.ts`.
+- `GOOGLEAI_API_KEY`: Google AI API key expected by the broader application configuration and exposed by `getAPIKey("googleai")` in `src/utils.ts`, but not currently consumed by the active Vertex AI client path in `src/ask-googleai.ts`.
 - `AUTH_TOKEN`: static shared token that must match the submitted form token before generation is allowed.
 - `GOOGLE_CLOUD_PROJECT`: Google Cloud project ID required by the current GoogleAI integration because it creates the Google client in Vertex AI mode.
 - `GOOGLE_CLOUD_LOCATION`: optional Google Cloud location for Vertex AI. Defaults to `global`.

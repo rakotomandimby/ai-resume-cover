@@ -1,0 +1,350 @@
+# Technical description: AI Resume Cover
+
+## Purpose
+
+This application is a Node.js and TypeScript web application that helps generate two job-application documents from a single submitted job description:
+
+- a tailored CV;
+- a cover letter.
+
+For each submission, the user selects one pair of LLM providers. The application then asks both selected providers to generate both documents, allowing the user to compare outputs side by side. Supported provider pairings are:
+
+- OpenAI + GoogleAI;
+- OpenAI + Anthropic;
+- GoogleAI + Anthropic.
+
+The rendered page displays the selected providers' cover-letter outputs and CV outputs in separate panels.
+
+## Runtime stack
+
+The server is implemented in `src/index.ts` with Express. It uses:
+
+- `express` as the HTTP application framework;
+- `body-parser` to parse URL-encoded HTML form submissions;
+- `cookie-parser` and `csurf` for cookie-backed CSRF protection;
+- `ejs` for server-side HTML rendering;
+- `openai` for OpenAI Chat Completions requests;
+- `@google/genai` for Google Gemini requests through Vertex AI mode;
+- `@anthropic-ai/sdk` for Anthropic Messages API requests;
+- TypeScript compiled to CommonJS JavaScript in `dist`.
+
+The main template is `views/index.ejs`. The application compiles TypeScript into `dist` and uses `path.join(__dirname, '../views')` so that the compiled server can still render the source `views` directory when run from the project layout.
+
+## Configuration
+
+At startup, the server reads configuration from environment variables:
+
+- `PORT`: optional HTTP port. If absent, the server listens on `3000`.
+- `OPENAI_API_KEY`: API key used by the OpenAI SDK.
+- `ANTHROPIC_API_KEY`: API key used by the Anthropic SDK.
+- `AUTH_TOKEN`: static shared token that must match the submitted form token before generation is allowed.
+- `GOOGLE_CLOUD_PROJECT`: Google Cloud project ID required by the current GoogleAI integration because it creates the Google client in Vertex AI mode.
+- `GOOGLE_CLOUD_LOCATION`: optional Google Cloud location for Vertex AI. Defaults to `global`.
+
+The utility function `getAuthToken()` in `src/utils.ts` treats a missing or empty `AUTH_TOKEN` as a critical configuration problem. The application still starts, but POST submissions are blocked until the token is configured.
+
+The server also builds an `envErrors` array during startup. These warnings are rendered at the top of the web page so that missing provider or security configuration is visible to the operator.
+
+## HTTP routes and request handling
+
+### `GET /`
+
+The GET route renders the initial form. It:
+
+1. runs CSRF middleware;
+2. creates an initial CSRF token;
+3. renders `views/index.ejs`;
+4. passes initial idle result objects for each provider/document slot;
+5. selects `openai-googleai` as the default provider combination;
+6. sets `isInitialLoad` to `true`, which hides generated-result sections until a submission is made.
+
+### `POST /`
+
+The POST route handles generation. It is also protected by CSRF middleware and expects the submitted form to include:
+
+- `token`: user-entered authentication token;
+- `job`: full job description;
+- `language`: either `English` or `French`;
+- `position`: target job title;
+- `words`: desired cover-letter word count;
+- `providersCombination`: selected provider pair;
+- `company`: company name, required only when company-specific context is enabled;
+- `searchCompany`: whether company-specific context should be included in the cover-letter prompt;
+- `enableSpecialInstructions`: whether custom guidance is enabled;
+- `specialInstructions`: guidance shared by the cover letter and, by default, the CV;
+- `useSeparateCVInstructions`: whether the CV should use separate guidance;
+- `cvSpecialInstructions`: CV-specific guidance when the separate-CV option is enabled.
+
+The route validates required input before any provider call is made. It rejects:
+
+- missing job, language, position, word-count, or token fields;
+- company-specific generation without a company name;
+- missing server-side `AUTH_TOKEN`;
+- submitted token values that do not exactly match `AUTH_TOKEN`.
+
+The provider combination is normalized against the valid list:
+
+- `openai-googleai`;
+- `openai-anthropic`;
+- `googleai-anthropic`.
+
+If the posted value is not valid, the application falls back to `openai-googleai`.
+
+## Authentication and CSRF protection
+
+The application has two layers of request protection:
+
+1. CSRF protection through `csurf({ cookie: true })`.
+   - The rendered form contains a hidden `_csrf` field.
+   - CSRF state is stored in a cookie.
+   - Invalid CSRF submissions are handled by a dedicated error middleware that renders a 403 response with a user-facing form error.
+
+2. A static application token through `AUTH_TOKEN`.
+   - The form asks the user to enter the token.
+   - The POST handler compares the submitted value with the server-side environment variable.
+   - If the server token is missing, submissions are refused even though the app starts.
+
+The token mechanism is not user-account authentication. It is a single shared secret intended to prevent casual unauthorized use of the generation endpoint.
+
+## User interface behavior
+
+The `views/index.ejs` template renders:
+
+- configuration warnings;
+- a form for generation inputs;
+- cover-letter result panels after submission;
+- tailored-CV result panels after submission.
+
+The result sections are conditional. They are hidden on initial page load and displayed only when `isInitialLoad` is false.
+
+Provider panels are also conditional. For example, if the user selects OpenAI + Anthropic, only OpenAI and Anthropic panels are rendered. The unselected provider promises resolve internally to `"Not selected"`, but those values are normally not shown because the template does not render panels for unselected providers.
+
+The template uses Bootstrap from a CDN for styling and the `flag-icons` CDN package for language icons. Client-side JavaScript controls form ergonomics:
+
+- when company search is disabled, the company input is disabled and filled with `Unknown`;
+- when company search is enabled, company name becomes required by server-side validation;
+- when special instructions are disabled, instruction fields are cleared and disabled;
+- when separate CV instructions are enabled, the dedicated CV instruction textarea is shown and enabled.
+
+## Generation pipeline
+
+After validation, the POST handler derives three boolean flags:
+
+- `runGoogleAI`;
+- `runOpenAI`;
+- `runAnthropic`.
+
+Each flag is based on the selected provider pair. The route then creates six promises:
+
+- GoogleAI CV;
+- OpenAI CV;
+- Anthropic CV;
+- GoogleAI cover letter;
+- OpenAI cover letter;
+- Anthropic cover letter.
+
+Only promises for selected providers call an SDK integration. Promises for unselected providers resolve immediately with `"Not selected"`.
+
+All six promises are awaited with `Promise.allSettled()`. This is an important design choice:
+
+- selected provider calls run concurrently;
+- a failure from one provider or document type does not prevent other results from being displayed;
+- every output slot is mapped into a uniform result object with a `status` and `content`.
+
+The helper `mapSettledResult()` converts fulfilled values into:
+
+```text
+{ status: "success", content: generatedOutput }
+```
+
+and rejected values into:
+
+```text
+{ status: "error", content: "Error generating ..." }
+```
+
+Rejected provider calls are also logged server-side with the underlying error object.
+
+## Prompt construction
+
+Prompt construction is split between `src/prompt.ts` and `src/system-instruction.ts`.
+
+### Base CV source
+
+`getBaseCV(language)` reads a local markdown CV file synchronously:
+
+- `src/cv-en.md` for English;
+- `src/cv-fr.md` for French.
+
+That base CV is inserted into both CV-generation and cover-letter conversations so that each model has access to the candidate's source professional history.
+
+### Cover-letter conversation
+
+`getCoverLetterConversation()` creates a multi-turn conversation:
+
+1. the user asks for help writing a cover letter;
+2. the assistant asks for the source professional history;
+3. the user provides the base CV markdown;
+4. the assistant asks for the job description;
+5. the user provides the submitted job description;
+6. optionally, the assistant asks for special instructions;
+7. optionally, the user provides trimmed custom instructions;
+8. the assistant asks what to do next;
+9. the user asks for a cover letter in the requested language and word count.
+
+When company-specific context is enabled, the final prompt includes the company name. When disabled, the generated prompt does not mention a target company.
+
+### CV conversation
+
+`getCVConversation()` follows a similar staged pattern:
+
+1. the user asks for help generating a tailored CV;
+2. the assistant asks for source professional history;
+3. the user provides the base CV markdown;
+4. the assistant asks for the job description;
+5. the user provides the submitted job description;
+6. optionally, the assistant asks for CV-generation special instructions;
+7. optionally, the user provides trimmed custom CV instructions;
+8. the assistant asks what to do next;
+9. the user asks for a tailored CV for the submitted role.
+
+The POST handler determines whether the CV receives shared special instructions or a dedicated CV-only instruction string:
+
+- by default, cover-letter instructions are reused for the CV;
+- if `useSeparateCVInstructions` is enabled, the CV receives `cvSpecialInstructions` instead.
+
+### System instructions
+
+`getSystemInstructionCoverLetter()` creates provider-level instructions for cover letters. It tells the model to:
+
+- act as the candidate;
+- write in first person;
+- produce a useful job-application cover letter;
+- avoid Markdown;
+- use a restrained, neutral, factual style;
+- optionally use what it knows about the named company.
+
+`getSystemInstructionCV()` creates provider-level instructions for CV generation. It tells the model to:
+
+- act as an expert CV writer;
+- tailor the base CV to the job description;
+- emphasize matching skills and experience;
+- reorganize and rephrase the base CV as needed;
+- include months and years in dates;
+- return an HTML fragment without full document tags, `<br>` tags, style tags, inline styles, or Markdown fences.
+
+Both instruction families support English and French.
+
+## Provider integrations
+
+### OpenAI
+
+`src/ask-openai.ts` uses the `openai` SDK and the `OPENAI_MODEL` constant.
+
+For both CV and cover-letter generation, it:
+
+1. builds a provider-neutral conversation using `src/prompt.ts`;
+2. prepends an OpenAI `system` message from `src/system-instruction.ts`;
+3. sends the request through `openai.chat.completions.create()`;
+4. extracts `choices[0].message.content`;
+5. converts null content to an empty string.
+
+Cover-letter responses pass through `nl2br()` because the template renders them as HTML. CV responses pass through `removeMarkdownCodeBlocks()` so the returned HTML fragment is not wrapped in Markdown code fences.
+
+### GoogleAI / Gemini
+
+`src/ask-googleai.ts` uses `@google/genai` in Vertex AI mode. The client is created with:
+
+- `vertexai: true`;
+- `project` from `GOOGLE_CLOUD_PROJECT`;
+- `location` from `GOOGLE_CLOUD_LOCATION` or `global`.
+
+The Google integration adapts the generic conversation turns to Gemini content objects:
+
+- `assistant` turns become Gemini `model` turns;
+- `user` turns remain `user` turns;
+- each turn content is sent as a single text part.
+
+System instructions are passed through the `config.systemInstruction` field of `client.models.generateContent()`.
+
+As with OpenAI, cover-letter text is converted with `nl2br()`, while CV output has Markdown code fences removed.
+
+### Anthropic
+
+`src/ask-anthropic.ts` uses `@anthropic-ai/sdk` and the `ANTHROPIC_MODEL` constant.
+
+For each request, it:
+
+1. builds the generic conversation turns;
+2. sends the system instruction via the Anthropic top-level `system` field;
+3. sends conversation turns as Messages API `messages`;
+4. sets `max_tokens` to `16384`;
+5. concatenates text blocks from `message.content`.
+
+Cover-letter text is converted with `nl2br()`. CV output has Markdown code fences removed.
+
+## Output formatting and rendering
+
+The application expects different output formats for the two document types:
+
+- Cover letters are expected as plain text. Newlines are converted to `<br>` before rendering.
+- CVs are expected as HTML fragments. The template renders successful CV output unescaped with EJS `<%- ... %>`.
+
+Errors and idle messages are rendered escaped with `<%= ... %>` inside Bootstrap alert or muted text elements. Successful provider output is rendered unescaped so that generated HTML fragments and `<br>` tags are interpreted by the browser.
+
+Because generated CV output is rendered as HTML, the system instruction attempts to constrain the model to a fragment without full document structure or inline styling. The application does not perform HTML sanitization on successful model output.
+
+## Error handling
+
+The application distinguishes between input/form errors and provider errors.
+
+Input and configuration errors are handled before provider calls and render the page with a global `formError` plus uniform error result objects.
+
+Provider errors are isolated by `Promise.allSettled()`. A failed provider call becomes an error result for that specific provider/document slot, while successful calls from other providers still render.
+
+CSRF errors are handled by Express error middleware. The response status is `403`, and the user is instructed to refresh and retry with cookies enabled.
+
+## Build and run behavior
+
+The project defines npm scripts in `package.json`, although the scripts reference a machine-specific Node path:
+
+- `npm run build` removes `dist`, copies `views` into `dist/views`, and runs `tsc`;
+- `npm start` performs the same build steps and then starts `dist/index.js`.
+
+The shell scripts are similar:
+
+- `run.sh` installs dependencies, removes `dist`, and compiles TypeScript;
+- `build.sh` installs dependencies, removes `dist`, compiles TypeScript, and runs the server.
+
+The TypeScript compiler is configured in `tsconfig.json` with:
+
+- CommonJS module output;
+- `dist` as output directory;
+- `strict` type checking enabled;
+- `esModuleInterop` enabled;
+- `skipLibCheck` enabled.
+
+## High-level execution sequence
+
+1. The server starts and records configuration warnings.
+2. A user opens `/`.
+3. The server renders the form with a CSRF token.
+4. The user submits a job description, position, language, word count, provider pair, token, and optional guidance.
+5. The POST route validates CSRF, required fields, company requirements, and the shared `AUTH_TOKEN`.
+6. The route derives selected providers from the provider-pair radio value.
+7. The route builds CV and cover-letter prompts from the base CV, job description, language, role, and special instructions.
+8. The selected providers are called concurrently for both document types.
+9. All fulfilled and rejected results are normalized.
+10. The page is rendered with provider-specific cover-letter and CV panels.
+
+## Notable implementation characteristics
+
+- The application is server-rendered; there is no front-end framework.
+- Provider calls are concurrent per request.
+- One failed provider does not fail the whole request.
+- Prompt construction is provider-neutral and adapted at each provider boundary.
+- The same source CV files are reused for all providers.
+- English and French are first-class language options.
+- The current Google integration uses Vertex AI environment variables rather than a direct API-key client.
+- The current provider model names are hardcoded constants in the provider modules.
+- Generated successful output is trusted and rendered unescaped to preserve formatting.

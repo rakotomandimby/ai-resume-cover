@@ -37,13 +37,14 @@ At startup, the server reads configuration from environment variables:
 - `PORT`: optional HTTP port. If absent, the server listens on `3000`.
 - `OPENAI_API_KEY`: API key used by the OpenAI SDK.
 - `ANTHROPIC_API_KEY`: API key used by the Anthropic SDK.
+- `GOOGLEAI_API_KEY`: Google AI API key expected by the broader application configuration and exposed by `getAPIKey("googleai")` in `src/utils.ts`.
 - `AUTH_TOKEN`: static shared token that must match the submitted form token before generation is allowed.
 - `GOOGLE_CLOUD_PROJECT`: Google Cloud project ID required by the current GoogleAI integration because it creates the Google client in Vertex AI mode.
 - `GOOGLE_CLOUD_LOCATION`: optional Google Cloud location for Vertex AI. Defaults to `global`.
 
 The utility function `getAuthToken()` in `src/utils.ts` treats a missing or empty `AUTH_TOKEN` as a critical configuration problem. The application still starts, but POST submissions are blocked until the token is configured.
 
-The server also builds an `envErrors` array during startup. These warnings are rendered at the top of the web page so that missing provider or security configuration is visible to the operator.
+The server also builds an `envErrors` array during startup. These warnings are rendered at the top of the web page so that missing provider or security configuration is visible to the operator. In the current source, GoogleAI startup validation checks `GOOGLE_CLOUD_PROJECT` for the Vertex AI integration rather than checking `GOOGLEAI_API_KEY`.
 
 ## HTTP routes and request handling
 
@@ -315,6 +316,8 @@ The shell scripts are similar:
 
 - `run.sh` installs dependencies, removes `dist`, and compiles TypeScript;
 - `build.sh` installs dependencies, removes `dist`, compiles TypeScript, and runs the server.
+
+The script names are therefore potentially misleading: `run.sh` currently performs a build only, while `build.sh` builds and starts the server.
 
 The TypeScript compiler is configured in `tsconfig.json` with:
 

@@ -2,7 +2,7 @@
 
 - Name: Mihamina RAKOTOMANDIMBY
 - Email: mihamina@rktmb.org
-- Phone: +261 32 99 236 88 (WhatsApp also)
+- Phone: +261329923688 (WhatsApp also)
 - Location: Antananarivo, Madagascar
 - LinkedIn: https://www.linkedin.com/in/mihaminarakotomandimby/
 - GitHub: https://github.com/rakotomandimby
@@ -17,18 +17,22 @@
 
 # Detailed career path
 
+- Product Manager at LoopTech from August 2026 to Present
+    - Collaborate with cross-functional teams to define and support Digital Out Of Home (DOOH) product and features.
+    - Contribute to the development of the product, in Full stack Javascript (Node.js, React, MySQL)
+    - Support and train the end users of the product, including the sales team and the customers.
 - Chief Information Officer at Inviso Group from November 2025 to April 2026
     - Oversee the company's IT strategy and infrastructure to ensure alignment with business goals.
     - Lead a team of IT professionals to implement and maintain technology solutions that enhance operational efficiency.
     - Lead Sage ERP configurations, accounting, human resources management, and business intelligence to unify the setup across the different companies of the group.
-- PHP Developers Performance Manager at Frennly from February 2025 to December 2025
-    - Develop and implement strategies to improve the operational efficiency of 25 PHP developers.
-    - Establish metrics, benchmarks, and goals to monitor and evaluate performance improvement initiatives.
-    - Collaborate with cross-functional teams to design and implement process improvements and best practices.
 - Lead Developer for LogicRDV from April 2025 to April 2026
     - Lead a team of 6 developers to build a web application for managing appointments and schedules.
     - Node.js stack with TypeScript, React, MariaDB, Redis, and Kafka.
     - Deployment on AWS with Docker and Kubernetes.
+- PHP Developers Performance Manager at Frennly from February 2025 to December 2025
+    - Develop and implement strategies to improve the operational efficiency of 25 PHP developers.
+    - Establish metrics, benchmarks, and goals to monitor and evaluate performance improvement initiatives.
+    - Collaborate with cross-functional teams to design and implement process improvements and best practices.
 - Contributor to the "CopilotChat.nvim" Neovim plugin (https://github.com/CopilotC-Nvim/CopilotChat.nvim)
     - A Neovim plugin intended to be the equivalent of, or better than, VSCode GitHub Copilot Chat
     - Iterative improvements and bug fixes

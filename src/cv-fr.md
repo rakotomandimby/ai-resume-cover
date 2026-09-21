@@ -2,7 +2,7 @@
 
 - Nom: Mihamina RAKOTOMANDIMBY
 - Email: mihamina@rktmb.org
-- Téléphone: +261 32 99 236 88 (WhatsApp aussi)
+- Téléphone: +261329923688 (WhatsApp aussi)
 - Localisation: Antananarivo, Madagascar
 - LinkedIn: https://www.linkedin.com/in/mihaminarakotomandimby/
 - GitHub: https://github.com/rakotomandimby
@@ -17,18 +17,22 @@
 
 # Parcours professionnel détaillé
 
+- Product Manager chez LoopTech d'août 2026 à aujourd'hui
+    - Collaborer avec des équipes transverses pour définir et soutenir le produit et les fonctionnalités Digital Out Of Home (DOOH).
+    - Contribuer au développement du produit, en Full stack Javascript (Node.js, React, MySQL)
+    - Support et formation des utilisateurs finaux du produit, y compris l'équipe commerciale et les clients.
 - Directeur des systèmes d'information chez Inviso Group de novembre 2025 à avril 2026
     - Superviser la stratégie informatique et l'infrastructure de l'entreprise afin d'assurer son alignement avec les objectifs commerciaux.
     - Diriger une équipe de professionnels de l'informatique pour mettre en œuvre et maintenir des solutions technologiques qui améliorent l'efficacité opérationnelle.
     - Piloter les configurations ERP Sage, comptabilité, gestion des ressources humaines et business intelligence pour uniformiser le paramétrage sur les différentes sociétés du groupe.
-- Responsable de la performance des développeurs PHP chez Frennly de février 2025 à décembre 2025
-    - Développer et mettre en œuvre des stratégies pour améliorer l'efficacité opérationnelle de 25 développeurs PHP.
-    - Établir des indicateurs, des références et des objectifs pour surveiller et évaluer les initiatives d'amélioration des performances.
-    - Collaborer de manière transverse pour améliorer les processus et les bonnes pratiques de développement.
 - Lead Developer pour LogicRDV d'avril 2025 à avril 2026
     - Direction d'une équipe de 6 développeurs sur une application web de gestion des rendez-vous et des plannings.
     - Pile technologique : Node.js avec TypeScript, React, MariaDB, Redis et Kafka.
     - Déploiement sur AWS avec Docker et Kubernetes.
+- Responsable de la performance des développeurs PHP chez Frennly de février 2025 à décembre 2025
+    - Développer et mettre en œuvre des stratégies pour améliorer l'efficacité opérationnelle de 25 développeurs PHP.
+    - Établir des indicateurs, des références et des objectifs pour surveiller et évaluer les initiatives d'amélioration des performances.
+    - Collaborer de manière transverse pour améliorer les processus et les bonnes pratiques de développement.
 - Contributeur au plugin Neovim "CopilotChat.nvim" (https://github.com/CopilotC-Nvim/CopilotChat.nvim)
     - Plugin Neovim visant à être l'équivalent de VSCode GitHub Copilot Chat, voire mieux
     - Améliorations itératives et corrections de bugs

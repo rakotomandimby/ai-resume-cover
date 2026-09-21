@@ -1,0 +1,19 @@
+<fieldset class="mb-3 border rounded p-3">
+  <legend class="float-none w-auto fs-6 fw-semibold px-2">Special Instructions</legend>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="enableSpecialInstructions" name="enableSpecialInstructions" value="true" checked>
+    <label class="form-check-label" for="enableSpecialInstructions">Add custom guidance (applied to both the cover letter and the CV by default)</label>
+  </div>
+  <div class="mb-3">
+    <label for="specialInstructions" class="form-label" id="specialInstructionsLabel">Special instructions (cover letter and CV)</label>
+    <textarea id="specialInstructions" class="form-control" rows="3" name="specialInstructions" placeholder="E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc."></textarea>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="useSeparateCVInstructions" name="useSeparateCVInstructions" value="true">
+    <label class="form-check-label" for="useSeparateCVInstructions">Use separate instructions for the CV</label>
+  </div>
+  <div class="mb-0" id="cvSpecialInstructionsGroup">
+    <label for="cvSpecialInstructions" class="form-label" id="cvSpecialInstructionsLabel">Special instructions (CV only)</label>
+    <textarea id="cvSpecialInstructions" class="form-control" rows="3" name="cvSpecialInstructions" placeholder="E.g., prioritize technical stack keywords, reorder experience to match the role, etc."></textarea>
+  </div>
+</fieldset>

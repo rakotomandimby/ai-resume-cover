@@ -1,0 +1,13 @@
+<form class="mt-4" action="/" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <%- include('form-token') %>
+  <%- include('form-company') %>
+  <%- include('form-job-details') %>
+  <%- include('form-instructions') %>
+  <%- include('form-language') %>
+  <%- include('form-words') %>
+  <%- include('form-providers') %>
+
+  <button type="submit" class="btn btn-primary">Generate</button>
+</form>

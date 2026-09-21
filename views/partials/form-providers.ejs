@@ -1,0 +1,15 @@
+<fieldset class="mb-3 border rounded p-3">
+  <legend class="float-none w-auto fs-6 fw-semibold px-2">API Providers</legend>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="providersCombination" id="comboOpenAIGoogleAI" value="openai-googleai" <%= selectedCombination === 'openai-googleai' ? 'checked' : '' %>>
+    <label class="form-check-label" for="comboOpenAIGoogleAI">OpenAI & GoogleAI</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="providersCombination" id="comboOpenAIAnthropic" value="openai-anthropic" <%= selectedCombination === 'openai-anthropic' ? 'checked' : '' %>>
+    <label class="form-check-label" for="comboOpenAIAnthropic">OpenAI & Anthropic</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="providersCombination" id="comboGoogleAIAnthropic" value="googleai-anthropic" <%= selectedCombination === 'googleai-anthropic' ? 'checked' : '' %>>
+    <label class="form-check-label" for="comboGoogleAIAnthropic">GoogleAI & Anthropic</label>
+  </div>
+</fieldset>

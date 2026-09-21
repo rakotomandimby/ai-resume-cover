@@ -1,0 +1,70 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchCompanyCheckbox = document.getElementById('searchCompany');
+    const companyInput = document.getElementById('company');
+    const companyLabel = document.querySelector('label[for="company"]');
+
+    function updateCompanyInputState() {
+      if (searchCompanyCheckbox.checked) {
+        companyInput.disabled = false;
+        companyInput.placeholder = "Enter company name (required for company-specific info)";
+        companyLabel.textContent = "Company name (required for search)";
+        if (companyInput.value === 'Unknown') {
+          companyInput.value = '';
+        }
+      } else {
+        companyInput.disabled = true;
+        companyInput.placeholder = "Company information will not be used";
+        companyLabel.textContent = "Company name (will not be used)";
+        companyInput.value = 'Unknown';
+      }
+    }
+
+    searchCompanyCheckbox.addEventListener('change', updateCompanyInputState);
+    updateCompanyInputState();
+
+    const enableSpecialInstructionsCheckbox = document.getElementById('enableSpecialInstructions');
+    const specialInstructionsTextarea = document.getElementById('specialInstructions');
+    const useSeparateCVInstructionsCheckbox = document.getElementById('useSeparateCVInstructions');
+    const cvSpecialInstructionsGroup = document.getElementById('cvSpecialInstructionsGroup');
+    const cvSpecialInstructionsTextarea = document.getElementById('cvSpecialInstructions');
+
+    function updateSpecialInstructionsState() {
+      const enabled = enableSpecialInstructionsCheckbox.checked;
+
+      // Base (shared) special instructions
+      if (enabled) {
+        specialInstructionsTextarea.disabled = false;
+        specialInstructionsTextarea.placeholder = "E.g., emphasize my leadership skills, keep the tone very enthusiastic, etc.";
+      } else {
+        specialInstructionsTextarea.value = '';
+        specialInstructionsTextarea.disabled = true;
+        specialInstructionsTextarea.placeholder = "Special instructions are disabled";
+      }
+
+      // The "separate CV instructions" option only makes sense when instructions are enabled
+      useSeparateCVInstructionsCheckbox.disabled = !enabled;
+      if (!enabled) {
+        useSeparateCVInstructionsCheckbox.checked = false;
+      }
+
+      const useSeparate = enabled && useSeparateCVInstructionsCheckbox.checked;
+
+      // Dedicated CV special instructions
+      if (useSeparate) {
+        cvSpecialInstructionsGroup.style.display = '';
+        cvSpecialInstructionsTextarea.disabled = false;
+        cvSpecialInstructionsTextarea.placeholder = "E.g., prioritize technical stack keywords, reorder experience to match the role, etc.";
+      } else {
+        cvSpecialInstructionsGroup.style.display = 'none';
+        cvSpecialInstructionsTextarea.value = '';
+        cvSpecialInstructionsTextarea.disabled = true;
+      }
+    }
+
+    enableSpecialInstructionsCheckbox.addEventListener('change', updateSpecialInstructionsState);
+    useSeparateCVInstructionsCheckbox.addEventListener('change', updateSpecialInstructionsState);
+    updateSpecialInstructionsState();
+  });
+</script>

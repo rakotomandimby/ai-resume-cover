@@ -1,0 +1,31 @@
+<% if (!isInitialLoad) { %>
+<h3 class="mt-4">Cover Letters</h3>
+<div class="row mt-3">
+  <% if (selectedCombination === 'openai-googleai' || selectedCombination === 'googleai-anthropic') { %>
+    <%- include('result-card', {
+      title: 'GoogleAI Cover Letter Result',
+      elementId: 'googleAICoverLetterResult',
+      result: results.googleAICoverLetter,
+      preWrap: true
+    }) %>
+  <% } %>
+
+  <% if (selectedCombination === 'openai-googleai' || selectedCombination === 'openai-anthropic') { %>
+    <%- include('result-card', {
+      title: 'OpenAI Cover Letter Result',
+      elementId: 'openAICoverLetterResult',
+      result: results.openAICoverLetter,
+      preWrap: true
+    }) %>
+  <% } %>
+
+  <% if (selectedCombination === 'openai-anthropic' || selectedCombination === 'googleai-anthropic') { %>
+    <%- include('result-card', {
+      title: 'Anthropic Cover Letter Result',
+      elementId: 'anthropicCoverLetterResult',
+      result: results.anthropicCoverLetter,
+      preWrap: true
+    }) %>
+  <% } %>
+</div>
+<% } %>

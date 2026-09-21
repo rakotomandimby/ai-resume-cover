@@ -1,0 +1,12 @@
+<% if (typeof envErrors !== 'undefined' && envErrors.length > 0) { %>
+  <div class="alert alert-danger mt-3" role="alert">
+    <h4 class="alert-heading">Configuration Error!</h4>
+    <p>The application has detected the following configuration issues. Please resolve them for full functionality:</p>
+    <hr>
+    <ul>
+      <% envErrors.forEach(function(error) { %>
+        <li><%- error %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>

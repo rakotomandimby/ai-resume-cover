@@ -1,0 +1,16 @@
+<div class="col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <%= title %>
+    </div>
+    <div class="card-body<%= preWrap ? ' result-preformatted' : '' %>" id="<%= elementId %>">
+      <% if (result.status === 'error') { %>
+        <div class="alert alert-danger mb-0"><%= result.content %></div>
+      <% } else if (result.status === 'idle') { %>
+        <p class="text-muted mb-0"><%= result.content %></p>
+      <% } else { %>
+        <%- result.content %>
+      <% } %>
+    </div>
+  </div>
+</div>

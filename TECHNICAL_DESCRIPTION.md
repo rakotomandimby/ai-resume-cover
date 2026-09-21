@@ -293,7 +293,7 @@ The application expects different output formats for the two document types:
 
 Errors and idle messages are rendered escaped with `<%= ... %>` inside Bootstrap alert or muted text elements. Successful provider output is rendered unescaped so that generated HTML fragments and `<br>` tags are interpreted by the browser.
 
-Because generated CV output is rendered as HTML, the system instruction attempts to constrain the model to a fragment without full document structure or inline styling. The application does not perform HTML sanitization on successful model output.
+Because generated CV output is rendered as HTML, the system instruction attempts to constrain the model to a fragment without full document structure or inline styling. The application does not perform HTML sanitization on successful model output. This is a security risk: if a model is manipulated, compromised, or simply returns unsafe HTML, the unescaped EJS rendering could expose users to cross-site scripting.
 
 ## Error handling
 
@@ -314,8 +314,8 @@ The project defines npm scripts in `package.json`, although the scripts referenc
 
 The shell scripts are similar:
 
-- `run.sh` installs dependencies, removes `dist`, and compiles TypeScript;
-- `build.sh` installs dependencies, removes `dist`, compiles TypeScript, and runs the server.
+- `run.sh` is currently the build-only script: it installs dependencies, removes `dist`, and compiles TypeScript;
+- `build.sh` is currently the build-and-run script: it installs dependencies, removes `dist`, compiles TypeScript, and runs the server.
 
 The script names are therefore potentially misleading: `run.sh` currently performs a build only, while `build.sh` builds and starts the server.
 

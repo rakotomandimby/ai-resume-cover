@@ -3,7 +3,7 @@ import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } from './system-instruction';
 import { nl2br, nullToEmptyString, getAPIKey, removeMarkdownCodeBlocks } from './utils';
 
-export const OPENAI_MODEL = 'gpt-5.6-terra';  
+export const OPENAI_MODEL = 'gpt-6-sol';  
 
 export async function getOpenAICoverLetterResult(
   company: string,

@@ -53,6 +53,7 @@ export function getSystemInstructionCV(language: string): string {
       + ' Toujours inclure les mois et les années dans les dates du CV.\n\n'
       + ' Le CV généré doit être formaté en tant que fragment HTML sans la balise HTML, ni la balise HEAD, ni la balise  TITLE, ni la balise BODY, ni la balise BR .'
       + ' Ne pas utiliser de balise STYLE, ni de styles dans les attributs style.'
+      + ' Ne pas utiliser la balise TIME.'
       + ' Il ne faut mettre aucun élément Markdown dans la réponse: ne jamais mettre de triple apostrophe inversées.';
   }
 
@@ -65,6 +66,7 @@ export function getSystemInstructionCV(language: string): string {
       + ' Always incluce the months and years in the dates of the CV.\n\n'
       + ' The generated CV should be formatted as an HTML fragment without the HTML tag , nor the HEAD tag , nor the TITLE tag , nor the BODY tag, nor the BR tag.'
       + ' Do not use any STYLE tag, nor inline styles in the style attribute.'
+      + ' Do not use the TIME tag.'
       + ' Do not put any Markdown elements in the answer: do not put triple backticks.';
   }
 

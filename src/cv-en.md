@@ -20,7 +20,7 @@
 - Product Manager at LoopTech from August 2026 to Present
     - Collaborate with cross-functional teams to define and support Digital Out Of Home (DOOH) product and features.
     - Contribute to the development of the product, in Full stack Javascript (Node.js, React, MySQL)
-    - Support and train the end users of the product, including the sales team and the customers.
+    - MAnage the infrastructure hosting the product, in Google Cloud Platform (GCP)
 - Chief Information Officer at Inviso Group from November 2025 to April 2026
     - Oversee the company's IT strategy and infrastructure to ensure alignment with business goals.
     - Lead a team of IT professionals to implement and maintain technology solutions that enhance operational efficiency.

@@ -19,8 +19,8 @@
 
 - Product Manager at LoopTech from August 2026 to Present
     - Collaborate with cross-functional teams to define and support Digital Out Of Home (DOOH) product and features.
-    - Contribute to the development of the product, in Full stack Javascript (Node.js, React, MySQL)
-    - MAnage the infrastructure hosting the product, in Google Cloud Platform (GCP)
+    - Contribute to the development of the product, in Full stack Javascript (Node.js, React, MySQL), including unit testing and integration tests.
+    - Manage the infrastructure hosting the product, in Google Cloud Platform (GCP)
 - Chief Information Officer at Inviso Group from November 2025 to April 2026
     - Oversee the company's IT strategy and infrastructure to ensure alignment with business goals.
     - Lead a team of IT professionals to implement and maintain technology solutions that enhance operational efficiency.
@@ -45,6 +45,10 @@
     - A Neovim plugin to use AI models in the Neovim editor.
     - Supports OpenAI, Google Gemini, and Anthropic AI models.
     - Strong context management to provide relevant answers from the AI models.
+- DevOps and IT Architect at Oney France from June 2022 to june 2024
+    - Administer and optimize the IT infrastructure on Azure
+    - Optimize the CI/CD pipelines for the development teams (Azure DevOps)
+    - Optimize the MongoDb database performance and cost (sharding, indexes, and queries) on Atlas MongoDB 
 - Information Technology Architect at Intelios from March 2020 to October 2024
     - Drive coding standards
         - Establish coding standards and the corresponding CI/CD tools and configuration (Jenkins)
@@ -56,6 +60,7 @@
         - Choose and establish the security, backup, and update strategy
     - Implement and run the call center IT infrastructure
         - Configure and run the Asterisk PBX cluster and its AGI and AMI features (PHP, TypeScript)
+        - Design and architect the APIs for integrating existing applications
         - Configure and run the call center performance dashboard (PHP, React, PostgreSQL)
         - Secure the data and the infrastructure (firewall, VPN, backup, updates)
 - Project Manager for Ibonia from 2020 to 2021
@@ -69,7 +74,7 @@
     - Develop applications in C# / .NET Core
     - Contribute to making the company a great place to work (GPTW 2020)
 - Self-employed, enterprise-oriented IT consultant from February 2019 to November 2019
-    - Orange Madagascar (major telecommunications company): Project Manager on the refactoring of B2B-related applications (Java, Angular, Atlassian Forge, and CI/CD)
+    - Orange Madagascar (major telecommunications company): Project Manager on the refactoring of B2B-related applications (Java, Angular, Atlassian Forge, Elasticsearch and CI/CD)
     - Arawak (textile factory): Coach for the IT team (Jira setup, reporting)
     - ATS (Business Process Outsourcing): Project Manager on a performance management tool for about 1000 collaborators (React, Symfony, Jenkins CI/CD)
     - DevFest Madagascar: Speaker at the 2019 to 2022 DevFest sessions organized by the Google Developers Group in Madagascar

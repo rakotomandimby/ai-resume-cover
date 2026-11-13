@@ -19,7 +19,7 @@
 
 - Product Manager chez LoopTech d'août 2026 à aujourd'hui
     - Collaborer avec des équipes transverses pour définir et soutenir le produit et les fonctionnalités Digital Out Of Home (DOOH).
-    - Contribuer au développement du produit, en Full stack Javascript (Node.js, React, MySQL)
+    - Contribuer au développement du produit, en Full stack Javascript (Node.js, React, MySQL), incluant l'ecriture de tests unitaires et d'intégration.
     - Gérer l'infrastructure hébergeant le produit, dans Google Cloud Platform (GCP)
 - Directeur des systèmes d'information chez Inviso Group de novembre 2025 à avril 2026
     - Superviser la stratégie informatique et l'infrastructure de l'entreprise afin d'assurer son alignement avec les objectifs commerciaux.
@@ -45,6 +45,10 @@
     - Plugin Neovim pour utiliser des modèles d'IA dans l'éditeur Neovim.
     - Supporte les modèles d'IA OpenAI, Google Gemini et Anthropic.
     - Gestion avancée du contexte pour obtenir des réponses pertinentes des modèles d'IA.
+- DevOps et Architecte IT chez Oney France de juin 2022 à juin 2024
+    - Administrer et optimiser l'infrastructure informatique sur Azure
+    - Optimiser les pipelines CI/CD pour les équipes de développement (Azure DevOps)
+    - Optimiser la performance et le coût de la base de données MongoDb (sharding, index et requêtes) sur Atlas MongoDB
 - Architecte en technologies de l'information chez Intelios de mars 2020 à octobre 2024
     - Diriger l'établissement des conventions de codage
         - Établir les normes de développement logiciel selon les outils et configurations CI/CD (Jenkins)
@@ -56,6 +60,7 @@
         - Choisir et mettre en place la stratégie de sécurité, sauvegarde et mise à jour
     - Mise en place et administration de l'infrastructure informatique du centre d'appels
         - Configurer et administrer le cluster Asterisk PBX et ses fonctionnalités AGI et AMI (PHP, TypeScript)
+        - Concevoir et architecturer les API pour l'intégration avec les applications existantes
         - Configurer et administrer le tableau de bord de performance du centre d'appels (PHP, React, PostgreSQL)
         - Sécuriser les données et l'infrastructure (pare-feu, VPN, sauvegarde, mises à jour)
 - Chef de projet pour Ibonia de 2020 à 2021
@@ -69,7 +74,7 @@
     - Développer en C# / .NET Core
     - Participer à faire de l'entreprise un "Great Place to Work" (GPTW 2020)
 - Consultant IT indépendant orienté informatique d'entreprise de février 2019 à novembre 2019
-    - Orange Madagascar (acteur majeur des télécommunications) : Chef de projet sur la refonte des applications B2B (Java, Angular, Atlassian Forge et CI/CD)
+    - Orange Madagascar (acteur majeur des télécommunications) : Chef de projet sur la refonte des applications B2B (Java, Angular, Atlassian Forge, Elasticsearch et CI/CD)
     - Arawak (usine textile) : Coach pour l'équipe IT (configuration de Jira, reporting)
     - ATS (externalisation des processus métiers) : Chef de projet sur un outil de gestion de la performance pour environ 1000 collaborateurs (React, Symfony, Jenkins CI/CD)
     - DevFest Madagascar : Orateur lors des sessions DevFest de 2019 à 2022 organisées par le Google Developers Group à Madagascar

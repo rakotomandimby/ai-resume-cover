@@ -3,7 +3,7 @@ import { getSystemInstructionCoverLetter, getSystemInstructionCV, getBaseCV } fr
 import { getCoverLetterConversation, getCVConversation } from './prompt';
 import { nl2br, removeMarkdownCodeBlocks } from './utils';
 
-export const GOOGLEAI_MODEL = 'gemini-3.1-pro-preview';
+export const GOOGLEAI_MODEL = 'gemini-4-carbon';
 
 function getVertexAIClient(): GoogleGenAI {
   const project = process.env.GOOGLE_CLOUD_PROJECT;
